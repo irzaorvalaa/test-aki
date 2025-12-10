@@ -1,0 +1,13 @@
+# robots.txt untuk Sentosa Jaya Mandiri Cirebon
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_backup/
+
+# Sitemap
+Sitemap: https://www.sentosajayamandiri.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
