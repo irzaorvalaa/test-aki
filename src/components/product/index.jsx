@@ -4,11 +4,12 @@ import Wrapper from "@/src/layout/wrapper";
 import SEO from "@/src/components/common/seo";
 import HeaderFive from "@/src/layout/headers/header-3";
 import Footer from "@/src/layout/footers/footer";
-import Breadcrumb from "@/src/components/common/breadcrumb/breadcrumb";
+import BreadcrumbProduct from "@/src/components/common/breadcrumb/breadcrumb-product";
 import ProductCard from "./product-card";
 import ProductFilter from "./product-filter";
 import Pagination from "./pagination";
 import product_data from "@/src/data/product-data";
+import Breadcrumb from "../common/breadcrumb/breadcrumb";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -74,10 +75,7 @@ const Product = () => {
     <Wrapper>
       <SEO pageTitle="Produk Aki - Aki Berkualitas Cirebon" />
       <HeaderFive />
-      <Breadcrumb
-        title="Galeri Produk Aki"
-        subtitle="Jelajahi berbagai pilihan aki berkualitas untuk kendaraan Anda di Cirebon dan sekitarnya"
-      />
+      <BreadcrumbProduct />
 
       <section className="product-area">
         <div className="container">
