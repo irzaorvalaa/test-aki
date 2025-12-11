@@ -9,7 +9,7 @@ import breadcrumb_shape_4 from "@assets/img/shape/shape-c-2.png";
 
 const BreadcrumbProduct = ({
   top_title = "List Produk Kami",
-  title = "Produk AKI SJM",
+  title = "title",
 }) => {
   // ✅ DETECT SCREEN SIZE
   const [isMobile, setIsMobile] = useState(false);
@@ -95,7 +95,7 @@ const BreadcrumbProduct = ({
             </div>
           </div>
 
-          {/* ✅ BRAND PARTNERS SECTION - RESPONSIVE */}
+          {/* ✅ BRAND PARTNERS SECTION - PAKAI STRUKTUR CONTACT (SIMPLE!) */}
           <div className="row mt-40">
             <div className="col-12">
               <div
@@ -106,38 +106,24 @@ const BreadcrumbProduct = ({
                   boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
                 }}
               >
-                {/* ✅ TITLE - FIX BENER! */}
-                <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginBottom: isMobile ? "30px" : "40px",
-                    position: "relative",
-                  }}
-                >
-                  <h5
-                    style={{
-                      fontSize: isMobile ? "14px" : "16px",
-                      fontWeight: "700",
-                      color: "#64748b",
-                      textTransform: "uppercase",
-                      letterSpacing: isMobile ? "1px" : "2px",
-                      margin: 0,
-                      padding: 0,
-                      position: "relative",
-                      // ✅ INI KUNCINYA!
-                      // Desktop: left 16% dengan translateX -50% = posisi custom
-                      // Mobile: left 50% dengan translateX -50% = tengah sempurna
-                      left: isMobile ? "33%" : "15%",
-                      transform: "translateX(-50%)",
-                      whiteSpace: "nowrap",
-                      textAlign: "center",
-                    }}
-                  >
-                    BRAND PARTNER TERPERCAYA
-                  </h5>
+                {/* ✅ TITLE - STRUKTUR SEPERTI CONTACT (PASTI TENGAH!) */}
+                <div className="row justify-content-center mb-40">
+                  <div className="col-xl-12 col-lg-12">
+                    <div className="text-center">
+                      <h5
+                        style={{
+                          fontSize: isMobile ? "14px" : "16px",
+                          fontWeight: "700",
+                          color: "#64748b",
+                          textTransform: "uppercase",
+                          letterSpacing: isMobile ? "1px" : "2px",
+                          marginBottom: 0,
+                        }}
+                      >
+                        BRAND PARTNER TERPERCAYA
+                      </h5>
+                    </div>
+                  </div>
                 </div>
 
                 {/* ✅ LOGO CONTAINER - RESPONSIVE */}
@@ -157,7 +143,7 @@ const BreadcrumbProduct = ({
                         src={brand.logo}
                         alt={`${brand.name} - Aki Terpercaya Cirebon`}
                         style={{
-                          height: isMobile ? "170px" : "240px",
+                          height: isMobile ? "150px" : "240px",
                           width: "auto",
                           maxWidth: isMobile ? "180px" : "320px",
                           objectFit: "contain",
