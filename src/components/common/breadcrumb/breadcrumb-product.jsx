@@ -9,7 +9,7 @@ import breadcrumb_shape_4 from "@assets/img/shape/shape-c-2.png";
 
 const BreadcrumbProduct = ({
   top_title = "List Produk Kami",
-  title = "title",
+  title = "Product AKI SJM Cirebon",
 }) => {
   // ✅ DETECT SCREEN SIZE
   const [isMobile, setIsMobile] = useState(false);
@@ -106,10 +106,16 @@ const BreadcrumbProduct = ({
                   boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
                 }}
               >
-                {/* ✅ TITLE - STRUKTUR SEPERTI CONTACT (PASTI TENGAH!) */}
-                <div className="row justify-content-center mb-40">
+                {/* ✅ TITLE - GESER KANAN DI DESKTOP */}
+                <div className="row mb-40">
                   <div className="col-xl-12 col-lg-12">
-                    <div className="text-center">
+                    <div
+                      style={{
+                        textAlign: "center",
+                        position: "relative",
+                        left: isMobile ? "0" : "3.8%", // ✅ GESER KANAN 8% DI DESKTOP
+                      }}
+                    >
                       <h5
                         style={{
                           fontSize: isMobile ? "14px" : "16px",

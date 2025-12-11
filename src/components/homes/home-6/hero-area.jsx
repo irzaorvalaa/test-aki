@@ -12,10 +12,18 @@ const HeroArea = () => {
           overflow: "hidden",
           minHeight: "400px",
           background: "#f8f9fa",
+          width: "100%",
+          maxWidth: "100vw", // ✅ FIX OVERFLOW
         }}
       >
         {/* ✅ DESKTOP Hero Image - Landscape */}
-        <div className="hero-image-desktop">
+        <div
+          className="hero-image-desktop"
+          style={{
+            width: "100%",
+            overflow: "hidden",
+          }}
+        >
           <Image
             src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920&h=600&fit=crop&q=80"
             alt="Toko Aki Sentosa Jaya Mandiri Cirebon - Penjualan Aki Mobil Motor Truk"
@@ -28,12 +36,22 @@ const HeroArea = () => {
               height: "auto",
               objectFit: "cover",
               maxHeight: "600px",
+              display: "block", // ✅ REMOVE INLINE SPACING
             }}
           />
         </div>
 
-        {/* ✅ MOBILE Hero Image - Portrait */}
-        <div className="hero-image-mobile">
+        {/* ✅ MOBILE Hero Image - Portrait (RESPONSIVE ALL DEVICES!) */}
+        <div
+          className="hero-image-mobile"
+          style={{
+            width: "100%",
+            maxWidth: "100vw", // ✅ MAX VIEWPORT WIDTH
+            overflow: "hidden", // ✅ PREVENT OVERFLOW
+            margin: 0,
+            padding: 0,
+          }}
+        >
           <Image
             src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=768&h=1024&fit=crop&q=80"
             alt="Toko Aki Sentosa Jaya Mandiri Cirebon - Aki Berkualitas"
@@ -46,6 +64,7 @@ const HeroArea = () => {
               height: "auto",
               objectFit: "cover",
               maxHeight: "500px",
+              display: "block", // ✅ REMOVE INLINE SPACING
             }}
           />
         </div>
@@ -247,6 +266,50 @@ const HeroArea = () => {
           </div>
         </div>
       </section>
+
+      {/* ✅ CSS FOR RESPONSIVE IMAGES */}
+      <style jsx>{`
+        /* Desktop Image - Show on desktop only */
+        .hero-image-desktop {
+          display: block;
+        }
+
+        .hero-image-mobile {
+          display: none;
+        }
+
+        /* Mobile Image - Show on mobile only */
+        @media (max-width: 768px) {
+          .hero-image-desktop {
+            display: none;
+          }
+
+          .hero-image-mobile {
+            display: block;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+          }
+
+          .hero-image-mobile img {
+            max-height: 500px !important;
+          }
+        }
+
+        /* Extra small devices (Oppo A7, iPhone SE) */
+        @media (max-width: 375px) {
+          .hero-image-mobile img {
+            max-height: 400px !important;
+          }
+        }
+
+        /* Small devices */
+        @media (min-width: 376px) and (max-width: 480px) {
+          .hero-image-mobile img {
+            max-height: 450px !important;
+          }
+        }
+      `}</style>
     </>
   );
 };
