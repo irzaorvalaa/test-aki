@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import footer_logo from "../../../public/assets/img/logo/Logo.png";
 import SocialLinks, { CopyRight } from "@/src/components/common/social-links";
 
 // footer data
@@ -48,16 +47,16 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
             <div className="row">
               <div className="col-xl-4 col-lg-6 col-md-8">
                 <div className="footer-widget mb-40">
-                  {/* ✅ LOGO RESPONSIVE */}
+                  {/* ✅ LOGO RESPONSIVE - PAKAI <img> BIASA */}
                   <div className="footer-text">
                     <Link href="/" className="footer-logo-link">
-                      <Image
-                        src={footer_logo}
+                      <img
+                        src="/assets/img/logo/Logo.png"
                         alt="Sentosa Jaya Mandiri - Toko Aki Cirebon"
                         style={{
                           width: "auto",
-                          height: "100px", // ✅ HEIGHT 60PX DI FOOTER (LEBIH BESAR DARI HEADER)
-                          maxWidth: "220px", // ✅ MAX WIDTH
+                          height: "100px",
+                          maxWidth: "220px",
                           objectFit: "contain",
                           display: "block",
                           marginBottom: "20px",
@@ -139,7 +138,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
       <style jsx>{`
         .footer-logo-link img {
           width: auto;
-          height: 60px;
+          height: 100px;
           max-width: 220px;
           object-fit: contain;
           display: block;
@@ -150,7 +149,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
         /* Tablet */
         @media (max-width: 991px) {
           .footer-logo-link img {
-            height: 55px;
+            height: 80px;
             max-width: 200px;
           }
         }
@@ -158,7 +157,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
         /* Mobile */
         @media (max-width: 768px) {
           .footer-logo-link img {
-            height: 50px;
+            height: 60px;
             max-width: 180px;
             margin: 0 auto 20px;
           }
@@ -167,7 +166,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
         /* Extra small devices */
         @media (max-width: 480px) {
           .footer-logo-link img {
-            height: 45px;
+            height: 50px;
             max-width: 160px;
           }
         }
