@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import footer_logo from "@assets/img/logo/Logo.png";
+import footer_logo from "../../../public/assets/img/logo/Logo.png";
 import SocialLinks, { CopyRight } from "@/src/components/common/social-links";
 
 // footer data
