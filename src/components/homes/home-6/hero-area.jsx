@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 
 const HeroArea = () => {
   return (
@@ -13,10 +13,9 @@ const HeroArea = () => {
           minHeight: "400px",
           background: "#f8f9fa",
           width: "100%",
-          maxWidth: "100vw", // ✅ FIX OVERFLOW
+          maxWidth: "100vw",
         }}
       >
-        {/* ✅ DESKTOP Hero Image - Landscape */}
         <div
           className="hero-image-desktop"
           style={{
@@ -36,40 +35,37 @@ const HeroArea = () => {
               height: "auto",
               objectFit: "cover",
               maxHeight: "600px",
-              display: "block", // ✅ REMOVE INLINE SPACING
+              display: "block",
             }}
           />
         </div>
 
-        {/* ✅ MOBILE Hero Image - Portrait (RESPONSIVE ALL DEVICES!) */}
         <div
           className="hero-image-mobile"
           style={{
             width: "100%",
-            maxWidth: "100vw", // ✅ MAX VIEWPORT WIDTH
-            overflow: "hidden", // ✅ PREVENT OVERFLOW
+            maxWidth: "100vw",
+            overflow: "hidden",
             margin: 0,
             padding: 0,
           }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=768&h=1024&fit=crop&q=80"
+            src="/assets/img/logo/roll.jpg"
             alt="Toko Aki Sentosa Jaya Mandiri Cirebon - Aki Berkualitas"
-            width={768}
-            height={1024}
+            width={1080}
+            height={1920}
             priority
-            quality={85}
+            quality={90}
             style={{
               width: "100%",
               height: "auto",
-              objectFit: "cover",
-              maxHeight: "500px",
-              display: "block", // ✅ REMOVE INLINE SPACING
+              objectFit: "contain",
+              display: "block",
             }}
           />
         </div>
 
-        {/* Gradient Overlay */}
         <div
           className="hero-overlay"
           style={{
@@ -84,7 +80,6 @@ const HeroArea = () => {
           }}
         />
 
-        {/* Hero Content */}
         <div
           className="hero-content"
           style={{
@@ -100,8 +95,7 @@ const HeroArea = () => {
             padding: "0 20px",
           }}
         >
-          {/* Main Heading */}
-          <h1
+          {/* <h1
             style={{
               fontSize: "clamp(24px, 5vw, 56px)",
               fontWeight: "700",
@@ -112,9 +106,8 @@ const HeroArea = () => {
             }}
           >
             Toko Aki Sentosa Jaya Mandiri Cirebon
-          </h1>
+          </h1> */}
 
-          {/* Subtitle */}
           <p
             style={{
               fontSize: "clamp(14px, 2.5vw, 22px)",
@@ -127,8 +120,7 @@ const HeroArea = () => {
             Resmi
           </p>
 
-          {/* CTA Buttons */}
-          <div
+          {/* <div
             style={{
               display: "flex",
               gap: "15px",
@@ -136,9 +128,8 @@ const HeroArea = () => {
               flexWrap: "wrap",
               marginTop: "30px",
             }}
-          >
-            {/* WhatsApp Button */}
-            <a
+          > */}
+          {/* <a
               href="https://wa.me/6281234567890?text=Halo%20Sentosa%20Jaya%20Mandiri%2C%20saya%20ingin%20tanya%20tentang%20aki"
               target="_blank"
               rel="noopener noreferrer"
@@ -172,10 +163,10 @@ const HeroArea = () => {
             >
               <i className="fab fa-whatsapp" style={{ fontSize: "22px" }}></i>
               <span>Chat WhatsApp</span>
-            </a>
+            </a> */}
 
-            {/* Product Button */}
-            <Link
+          {/* Product Button */}
+          {/* <Link
               href="/product"
               className="btn-product"
               style={{
@@ -214,10 +205,10 @@ const HeroArea = () => {
               ></i>
               <span>Lihat Produk</span>
             </Link>
-          </div>
+          </div> */}
 
           {/* Trust Badges */}
-          <div
+          {/* <div
             style={{
               display: "flex",
               gap: "20px",
@@ -263,7 +254,7 @@ const HeroArea = () => {
                 Produk Original
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -291,22 +282,32 @@ const HeroArea = () => {
             overflow: hidden;
           }
 
+          /* ✅ NO MAX HEIGHT! Biar panjang penuh */
           .hero-image-mobile img {
-            max-height: 500px !important;
+            width: 100% !important;
+            height: auto !important;
+            object-fit: contain !important;
+          }
+
+          /* ✅ Overlay lebih transparan di mobile */
+          .hero-overlay {
+            background: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.2) 0%,
+              rgba(0, 0, 0, 0.4) 100%
+            ) !important;
+          }
+
+          /* ✅ Content position adjusted for tall image */
+          .hero-content {
+            top: 30% !important;
           }
         }
 
-        /* Extra small devices (Oppo A7, iPhone SE) */
+        /* Extra small devices */
         @media (max-width: 375px) {
-          .hero-image-mobile img {
-            max-height: 400px !important;
-          }
-        }
-
-        /* Small devices */
-        @media (min-width: 376px) and (max-width: 480px) {
-          .hero-image-mobile img {
-            max-height: 450px !important;
+          .hero-content {
+            top: 25% !important;
           }
         }
       `}</style>

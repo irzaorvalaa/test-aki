@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import footer_logo from "@assets/img/logo/logo.png";
+import footer_logo from "@assets/img/logo/Logo.png";
 import SocialLinks, { CopyRight } from "@/src/components/common/social-links";
 
 // footer data
@@ -48,9 +48,21 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
             <div className="row">
               <div className="col-xl-4 col-lg-6 col-md-8">
                 <div className="footer-widget mb-40">
+                  {/* ✅ LOGO RESPONSIVE */}
                   <div className="footer-text">
-                    <Link href="/">
-                      <Image src={footer_logo} alt="theme-pure" />
+                    <Link href="/" className="footer-logo-link">
+                      <Image
+                        src={footer_logo}
+                        alt="Sentosa Jaya Mandiri - Toko Aki Cirebon"
+                        style={{
+                          width: "auto",
+                          height: "100px", // ✅ HEIGHT 60PX DI FOOTER (LEBIH BESAR DARI HEADER)
+                          maxWidth: "220px", // ✅ MAX WIDTH
+                          objectFit: "contain",
+                          display: "block",
+                          marginBottom: "20px",
+                        }}
+                      />
                     </Link>
                     <p>
                       Winged moving moveth created for shall and a divide the
@@ -122,6 +134,44 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
           </div>
         </div>
       </footer>
+
+      {/* ✅ CSS RESPONSIVE FOOTER LOGO */}
+      <style jsx>{`
+        .footer-logo-link img {
+          width: auto;
+          height: 60px;
+          max-width: 220px;
+          object-fit: contain;
+          display: block;
+          margin-bottom: 20px;
+          transition: all 0.3s ease;
+        }
+
+        /* Tablet */
+        @media (max-width: 991px) {
+          .footer-logo-link img {
+            height: 55px;
+            max-width: 200px;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+          .footer-logo-link img {
+            height: 50px;
+            max-width: 180px;
+            margin: 0 auto 20px;
+          }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+          .footer-logo-link img {
+            height: 45px;
+            max-width: 160px;
+          }
+        }
+      `}</style>
     </>
   );
 };
