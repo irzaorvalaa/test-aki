@@ -96,7 +96,7 @@ const BreadcrumbProduct = ({
                   }}
                 >
                   <img
-                    src="/assets/img/logo/Spanduk.jpg"
+                    src="/assets/img/logo/spanduk.jpg"
                     alt="Sentosa Jaya Mandiri - Toko Aki Cirebon | Jl. Lemahwungkuk No. 28 | 081 7799 54236"
                     style={{
                       width: "100%",

@@ -47,20 +47,21 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
             <div className="row">
               <div className="col-xl-4 col-lg-6 col-md-8">
                 <div className="footer-widget mb-40">
-                  {/* ✅ LOGO RESPONSIVE - PAKAI <img> BIASA */}
+                  {/* ✅ LOGO PAKAI NEXT IMAGE */}
                   <div className="footer-text">
                     <Link href="/" className="footer-logo-link">
-                      <img
-                        src="/assets/img/logo/Logo.png"
+                      <Image
+                        src="/assets/img/logo/logo.png"
                         alt="Sentosa Jaya Mandiri - Toko Aki Cirebon"
+                        width={220}
+                        height={100}
                         style={{
                           width: "auto",
                           height: "100px",
                           maxWidth: "220px",
                           objectFit: "contain",
-                          display: "block",
-                          marginBottom: "20px",
                         }}
+                        priority
                       />
                     </Link>
                     <p>
@@ -137,8 +138,8 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
       {/* ✅ CSS RESPONSIVE FOOTER LOGO */}
       <style jsx>{`
         .footer-logo-link img {
-          width: auto;
-          height: 100px;
+          width: auto !important;
+          height: 100px !important;
           max-width: 220px;
           object-fit: contain;
           display: block;
@@ -149,7 +150,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
         /* Tablet */
         @media (max-width: 991px) {
           .footer-logo-link img {
-            height: 80px;
+            height: 80px !important;
             max-width: 200px;
           }
         }
@@ -157,7 +158,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
         /* Mobile */
         @media (max-width: 768px) {
           .footer-logo-link img {
-            height: 60px;
+            height: 60px !important;
             max-width: 180px;
             margin: 0 auto 20px;
           }
@@ -166,7 +167,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
         /* Extra small devices */
         @media (max-width: 480px) {
           .footer-logo-link img {
-            height: 50px;
+            height: 50px !important;
             max-width: 160px;
           }
         }
