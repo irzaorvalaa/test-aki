@@ -9,7 +9,7 @@ import breadcrumb_shape_4 from "@assets/img/shape/shape-c-2.png";
 
 const BreadcrumbProduct = ({
   top_title = "List Produk Kami",
-  title = "title",
+  title = "Produk AKI SJM Cirebon",
 }) => {
   // ✅ DETECT SCREEN SIZE
   const [isMobile, setIsMobile] = useState(false);
