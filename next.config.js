@@ -2,15 +2,21 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // Image Optimization
+  // Image Optimization - UPDATED: domains → remotePatterns
   images: {
-    domains: [
-      "www.sentosajayamandiri.com",
-      "images.unsplash.com", // ✅ TAMBAH INI
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.sentosajayamandiri.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
-    formats: ["image/webp", "image/avif"], // ✅ Tambah AVIF juga
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920], // ✅ Optimize sizes
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // ✅ Thumbnail sizes
+    formats: ["image/webp", "image/avif"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
   // Compression
