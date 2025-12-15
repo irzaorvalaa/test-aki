@@ -11,7 +11,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@popperjs/core": "^2.11.8",
-    "@reduxjs/toolkit": "^1.9.5",
+    "@reduxjs/toolkit": "^2.11.2",
     "aos": "^2.3.4",
     "bootstrap": "^5.2.3",
     "framer-motion": "^10.12.12",
@@ -24,7 +24,7 @@
     "react-intersection-observer": "^9.4.3",
     "react-modal-image": "^2.6.0",
     "react-modal-video": "^2.0.0",
-    "react-redux": "^8.0.5",
+    "react-redux": "^9.2.0",
     "react-responsive-masonry": "^2.1.7",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.3",
