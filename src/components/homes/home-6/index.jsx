@@ -11,12 +11,16 @@ const HomeSix = () => {
   return (
     <>
       <HeaderFive />
-      <main>
+      <main style={{ padding: 0, margin: 0, overflow: "hidden" }}>
         <HeroArea />
-        <ServiceArea />
-        <ProductHighlight />
-        <GalleryHighlight />
-        <TestimonialArea />
+        <div
+          style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 15px" }}
+        >
+          <ServiceArea />
+          <ProductHighlight />
+          <GalleryHighlight />
+          <TestimonialArea />
+        </div>
       </main>
       <Footer />
     </>
