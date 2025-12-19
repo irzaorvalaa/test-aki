@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 
 const brandNames = {
   "amaron-go": "Amaron Go",
+  "amaron-onyx": "Amaron Onyx",
   "amaron-hilife": "Amaron Hi-Life",
-  yuasa: "Yuasa",
-  gs: "GS Astra",
-  incoe: "Incoe",
+  "amaron-hilife-pro": "Amaron Hi-Life Pro",
 };
 
 // ✅ GRADIENT COLORS PER BRAND
 const brandColors = {
   "amaron-go": {
+    color: "#84cc16",
+    gradient: "linear-gradient(135deg, #84cc16 0%, #a3e635 100%)",
+  },
+  "amaron-onyx": {
     color: "#10b981",
     gradient: "linear-gradient(135deg, #10b981 0%, #34d399 100%)",
   },
@@ -18,17 +21,21 @@ const brandColors = {
     color: "#059669",
     gradient: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
   },
+  "amaron-hilife-pro": {
+    color: "#047857",
+    gradient: "linear-gradient(135deg, #047857 0%, #059669 100%)",
+  },
   yuasa: {
     color: "#ff4757",
     gradient: "linear-gradient(135deg, #ff4757 0%, #ff6b6b 100%)",
   },
   gs: {
-    color: "#22c55e",
-    gradient: "linear-gradient(135deg, #22c55e 0%, #4ade80 100%)",
-  },
-  incoe: {
     color: "#f59e0b",
     gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
+  },
+  incoe: {
+    color: "#1f2937",
+    gradient: "linear-gradient(135deg, #1f2937 0%, #374151 100%)",
   },
 };
 
@@ -77,7 +84,7 @@ const ProductCard = ({ product }) => {
     const message = `Halo, saya tertarik dengan produk:\n\n*${
       product.title
     }*\n${product.category?.toUpperCase()}\n\nMohon info harga dan detail produk. Terima kasih!`;
-    const phoneNumber = "6281234567890";
+    const phoneNumber = "6281779954236";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
@@ -122,7 +129,7 @@ const ProductCard = ({ product }) => {
         }
       `}</style>
 
-      {/* ✅ CARD DESIGN LEBIH LEBAR & TIDAK TERLALU PANJANG */}
+      {/* ✅ CARD DESIGN */}
       <article
         className="product-card"
         style={{
@@ -150,7 +157,7 @@ const ProductCard = ({ product }) => {
           e.currentTarget.style.boxShadow = "none";
         }}
       >
-        {/* ✅ IMAGE SECTION - LEBIH PENDEK */}
+        {/* ✅ IMAGE SECTION */}
         <div
           style={{
             background: brandStyle.gradient,
@@ -163,7 +170,6 @@ const ProductCard = ({ product }) => {
             position: "relative",
           }}
         >
-          {/* Decorative circles */}
           <div
             style={{
               position: "absolute",
@@ -187,7 +193,6 @@ const ProductCard = ({ product }) => {
             }}
           />
 
-          {/* Product Image */}
           <div
             style={{
               position: "relative",
@@ -214,7 +219,6 @@ const ProductCard = ({ product }) => {
             />
           </div>
 
-          {/* Category Badge */}
           <span
             style={{
               position: "absolute",
@@ -236,7 +240,7 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
 
-        {/* ✅ CONTENT SECTION - LEBIH COMPACT */}
+        {/* ✅ CONTENT SECTION */}
         <div
           style={{
             padding: "20px",
@@ -246,7 +250,6 @@ const ProductCard = ({ product }) => {
             justifyContent: "space-between",
           }}
         >
-          {/* Title */}
           <h4
             style={{
               fontSize: "18px",
@@ -264,7 +267,6 @@ const ProductCard = ({ product }) => {
             {product.title}
           </h4>
 
-          {/* Description - SHORTER */}
           {product.description && (
             <p
               style={{
@@ -283,7 +285,6 @@ const ProductCard = ({ product }) => {
             </p>
           )}
 
-          {/* ✅ SPECS GRID - HORIZONTAL LAYOUT */}
           <div
             style={{
               display: "flex",
@@ -381,7 +382,6 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
 
-          {/* CTA Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -419,7 +419,7 @@ const ProductCard = ({ product }) => {
         </div>
       </article>
 
-      {/* ✅ MODAL TETAP SAMA */}
+      {/* ✅ MODAL QUICKVIEW */}
       {isModalOpen && (
         <div
           style={{
@@ -507,18 +507,19 @@ const ProductCard = ({ product }) => {
                   gridTemplateColumns: isMobile ? "1fr" : "45% 55%",
                 }}
               >
+                {/* LEFT: IMAGE */}
                 <div
                   style={{
                     background: brandStyle.gradient,
                     padding: isMobile ? "40px 30px 30px" : "60px 40px",
                     display: "flex",
+                    flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
                     minHeight: isMobile ? "auto" : "500px",
                     position: "relative",
                   }}
                 >
-                  {/* Decorative circles */}
                   <div
                     style={{
                       position: "absolute",
@@ -542,54 +543,93 @@ const ProductCard = ({ product }) => {
                     }}
                   />
 
+                  {/* LEFT: IMAGE */}
                   <div
                     style={{
+                      background: brandStyle.gradient,
+                      padding: isMobile ? "40px 30px 30px" : "60px 40px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      minHeight: isMobile ? "auto" : "500px",
                       position: "relative",
-                      width: "100%",
-                      maxWidth: isMobile ? "220px" : "320px",
-                      zIndex: 1,
                     }}
                   >
-                    <img
-                      src={product.img}
-                      alt={product.title}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "contain",
-                        borderRadius: "12px",
-                        filter: "drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2))",
-                      }}
-                    />
-
                     <div
                       style={{
                         position: "absolute",
-                        top: "0",
-                        left: "0",
+                        width: "150px",
+                        height: "150px",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        borderRadius: "50%",
+                        top: "-40px",
+                        right: "-40px",
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: "absolute",
+                        width: "100px",
+                        height: "100px",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        borderRadius: "50%",
+                        bottom: "-30px",
+                        left: "-30px",
+                      }}
+                    />
+
+                    {/* LANGSUNG KE PRODUCT IMAGE - TANPA LOGO */}
+                    <div
+                      style={{
+                        position: "relative",
+                        width: "100%",
+                        maxWidth: isMobile ? "220px" : "320px",
+                        zIndex: 1,
                       }}
                     >
-                      <span
+                      <img
+                        src={product.img}
+                        alt={product.title}
                         style={{
-                          padding: isMobile ? "8px 14px" : "10px 18px",
-                          borderRadius: "20px",
-                          fontSize: isMobile ? "11px" : "12px",
-                          fontWeight: "700",
-                          textTransform: "uppercase",
-                          background: "rgba(255, 255, 255, 0.25)",
-                          backdropFilter: "blur(10px)",
-                          color: "white",
-                          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
-                          letterSpacing: "0.5px",
-                          display: "inline-block",
+                          width: "100%",
+                          height: "auto",
+                          objectFit: "contain",
+                          borderRadius: "12px",
+                          filter: "drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2))",
+                        }}
+                      />
+
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "0",
+                          left: "0",
                         }}
                       >
-                        {brandNames[product.category] || product.category}
-                      </span>
+                        <span
+                          style={{
+                            padding: isMobile ? "8px 14px" : "10px 18px",
+                            borderRadius: "20px",
+                            fontSize: isMobile ? "11px" : "12px",
+                            fontWeight: "700",
+                            textTransform: "uppercase",
+                            background: "rgba(255, 255, 255, 0.25)",
+                            backdropFilter: "blur(10px)",
+                            color: "white",
+                            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
+                            letterSpacing: "0.5px",
+                            display: "inline-block",
+                          }}
+                        >
+                          {brandNames[product.category] || product.category}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
+                {/* RIGHT: CONTENT */}
                 <div
                   style={{
                     padding: isMobile ? "30px 25px 40px" : "60px 50px",
@@ -610,6 +650,7 @@ const ProductCard = ({ product }) => {
                     {product.title}
                   </h2>
 
+                  {/* ✅ SPECS WITH 2 COLUMNS */}
                   {product.specs && (
                     <div
                       style={{
@@ -632,168 +673,236 @@ const ProductCard = ({ product }) => {
                       >
                         Spesifikasi:
                       </h5>
+
+                      {/* ✅ 2 COLUMN LAYOUT */}
                       <div
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: isMobile ? "12px" : "16px",
+                          display: "grid",
+                          gridTemplateColumns: product.substitute_type
+                            ? "1fr 1fr"
+                            : "1fr",
+                          gap: isMobile ? "16px" : "20px",
                         }}
                       >
-                        {product.specs.capacity && (
+                        {/* KOLOM KIRI */}
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: isMobile ? "12px" : "16px",
+                          }}
+                        >
+                          {/* Kapasitas */}
+                          {product.specs.capacity && (
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: isMobile ? "12px" : "16px",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: isMobile ? "36px" : "42px",
+                                  height: isMobile ? "36px" : "42px",
+                                  background: "rgba(255, 255, 255, 0.2)",
+                                  borderRadius: "10px",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  flexShrink: 0,
+                                }}
+                              >
+                                <i
+                                  className="fas fa-battery-full"
+                                  style={{
+                                    fontSize: isMobile ? "16px" : "20px",
+                                    color: "white",
+                                  }}
+                                ></i>
+                              </div>
+                              <div style={{ flex: 1 }}>
+                                <div
+                                  style={{
+                                    fontSize: isMobile ? "10px" : "11px",
+                                    color: "rgba(255, 255, 255, 0.8)",
+                                    marginBottom: "3px",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  Kapasitas
+                                </div>
+                                <div
+                                  style={{
+                                    fontSize: isMobile ? "15px" : "17px",
+                                    fontWeight: "700",
+                                    color: "white",
+                                  }}
+                                >
+                                  {product.specs.capacity}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Voltase */}
+                          {product.specs.voltage && (
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: isMobile ? "12px" : "16px",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: isMobile ? "36px" : "42px",
+                                  height: isMobile ? "36px" : "42px",
+                                  background: "rgba(255, 255, 255, 0.2)",
+                                  borderRadius: "10px",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  flexShrink: 0,
+                                }}
+                              >
+                                <i
+                                  className="fas fa-bolt"
+                                  style={{
+                                    fontSize: isMobile ? "16px" : "20px",
+                                    color: "white",
+                                  }}
+                                ></i>
+                              </div>
+                              <div style={{ flex: 1 }}>
+                                <div
+                                  style={{
+                                    fontSize: isMobile ? "10px" : "11px",
+                                    color: "rgba(255, 255, 255, 0.8)",
+                                    marginBottom: "3px",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  Voltase
+                                </div>
+                                <div
+                                  style={{
+                                    fontSize: isMobile ? "15px" : "17px",
+                                    fontWeight: "700",
+                                    color: "white",
+                                  }}
+                                >
+                                  {product.specs.voltage}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Garansi */}
+                          {product.specs.warranty && (
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: isMobile ? "12px" : "16px",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: isMobile ? "36px" : "42px",
+                                  height: isMobile ? "36px" : "42px",
+                                  background: "rgba(255, 255, 255, 0.2)",
+                                  borderRadius: "10px",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  flexShrink: 0,
+                                }}
+                              >
+                                <i
+                                  className="fas fa-shield-alt"
+                                  style={{
+                                    fontSize: isMobile ? "16px" : "20px",
+                                    color: "white",
+                                  }}
+                                ></i>
+                              </div>
+                              <div style={{ flex: 1 }}>
+                                <div
+                                  style={{
+                                    fontSize: isMobile ? "10px" : "11px",
+                                    color: "rgba(255, 255, 255, 0.8)",
+                                    marginBottom: "3px",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  Garansi
+                                </div>
+                                <div
+                                  style={{
+                                    fontSize: isMobile ? "15px" : "17px",
+                                    fontWeight: "700",
+                                    color: "white",
+                                  }}
+                                >
+                                  {product.specs.warranty}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* KOLOM KANAN - TIPE ALTERNATIF */}
+                        {product.substitute_type && (
                           <div
                             style={{
                               display: "flex",
                               alignItems: "center",
-                              gap: isMobile ? "12px" : "16px",
+                              justifyContent: "center",
+                              padding: isMobile ? "16px" : "20px",
+                              background: "rgba(255, 255, 255, 0.1)",
+                              borderRadius: "12px",
+                              border: "2px dashed rgba(255, 255, 255, 0.3)",
                             }}
                           >
-                            <div
-                              style={{
-                                width: isMobile ? "36px" : "42px",
-                                height: isMobile ? "36px" : "42px",
-                                background: "rgba(255, 255, 255, 0.2)",
-                                borderRadius: "10px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexShrink: 0,
-                              }}
-                            >
+                            <div style={{ textAlign: "center" }}>
                               <i
-                                className="fas fa-battery-full"
+                                className="fas fa-code-branch"
                                 style={{
-                                  fontSize: isMobile ? "16px" : "20px",
+                                  fontSize: isMobile ? "24px" : "32px",
                                   color: "white",
+                                  marginBottom: "12px",
+                                  display: "block",
+                                  opacity: 0.9,
                                 }}
                               ></i>
-                            </div>
-                            <div style={{ flex: 1 }}>
                               <div
                                 style={{
                                   fontSize: isMobile ? "10px" : "11px",
                                   color: "rgba(255, 255, 255, 0.8)",
-                                  marginBottom: "3px",
+                                  marginBottom: "8px",
                                   textTransform: "uppercase",
                                   letterSpacing: "0.5px",
                                   fontWeight: "600",
                                 }}
                               >
-                                Kapasitas
+                                Tipe Alternatif
                               </div>
                               <div
                                 style={{
-                                  fontSize: isMobile ? "15px" : "17px",
+                                  fontSize: isMobile ? "16px" : "19px",
                                   fontWeight: "700",
                                   color: "white",
+                                  lineHeight: "1.3",
                                 }}
                               >
-                                {product.specs.capacity}
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        {product.specs.voltage && (
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: isMobile ? "12px" : "16px",
-                            }}
-                          >
-                            <div
-                              style={{
-                                width: isMobile ? "36px" : "42px",
-                                height: isMobile ? "36px" : "42px",
-                                background: "rgba(255, 255, 255, 0.2)",
-                                borderRadius: "10px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexShrink: 0,
-                              }}
-                            >
-                              <i
-                                className="fas fa-bolt"
-                                style={{
-                                  fontSize: isMobile ? "16px" : "20px",
-                                  color: "white",
-                                }}
-                              ></i>
-                            </div>
-                            <div style={{ flex: 1 }}>
-                              <div
-                                style={{
-                                  fontSize: isMobile ? "10px" : "11px",
-                                  color: "rgba(255, 255, 255, 0.8)",
-                                  marginBottom: "3px",
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.5px",
-                                  fontWeight: "600",
-                                }}
-                              >
-                                Voltase
-                              </div>
-                              <div
-                                style={{
-                                  fontSize: isMobile ? "15px" : "17px",
-                                  fontWeight: "700",
-                                  color: "white",
-                                }}
-                              >
-                                {product.specs.voltage}
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        {product.specs.warranty && (
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: isMobile ? "12px" : "16px",
-                            }}
-                          >
-                            <div
-                              style={{
-                                width: isMobile ? "36px" : "42px",
-                                height: isMobile ? "36px" : "42px",
-                                background: "rgba(255, 255, 255, 0.2)",
-                                borderRadius: "10px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexShrink: 0,
-                              }}
-                            >
-                              <i
-                                className="fas fa-shield-alt"
-                                style={{
-                                  fontSize: isMobile ? "16px" : "20px",
-                                  color: "white",
-                                }}
-                              ></i>
-                            </div>
-                            <div style={{ flex: 1 }}>
-                              <div
-                                style={{
-                                  fontSize: isMobile ? "10px" : "11px",
-                                  color: "rgba(255, 255, 255, 0.8)",
-                                  marginBottom: "3px",
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.5px",
-                                  fontWeight: "600",
-                                }}
-                              >
-                                Garansi
-                              </div>
-                              <div
-                                style={{
-                                  fontSize: isMobile ? "15px" : "17px",
-                                  fontWeight: "700",
-                                  color: "white",
-                                }}
-                              >
-                                {product.specs.warranty}
+                                {product.substitute_type}
                               </div>
                             </div>
                           </div>

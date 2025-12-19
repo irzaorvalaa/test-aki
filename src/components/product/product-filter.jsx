@@ -1,11 +1,10 @@
 import React from "react";
 
 const categories = [
-  { value: "amaron-go", label: "Amaron Go", color: "#10b981" },
-  { value: "amaron-hilife", label: "Amaron Hi-Life", color: "#059669" },
-  { value: "yuasa", label: "Yuasa", color: "#ff4757" },
-  { value: "gs", label: "GS Astra", color: "#f59e0b" },
-  { value: "incoe", label: "Incoe", color: "#1f2937" },
+  { value: "amaron-go", label: "Amaron Go", color: "#84cc16" }, // ✅ Lime Green
+  { value: "amaron-onyx", label: "Amaron Onyx", color: "#10b981" }, // ✅ Emerald Green
+  { value: "amaron-hilife", label: "Amaron Hi-Life", color: "#059669" }, // ✅ Green
+  { value: "amaron-hilife-pro", label: "Amaron Hi-Life Pro", color: "#047857" }, // ✅ Dark Green
 ];
 
 const ProductFilter = ({
