@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // Image Optimization - UPDATED: domains → remotePatterns
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+
   images: {
     remotePatterns: [
       {
