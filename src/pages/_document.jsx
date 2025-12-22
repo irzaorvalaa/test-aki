@@ -24,6 +24,11 @@ export default function Document() {
 
         {/* Preconnect untuk faster resources */}
         <link rel="preconnect" href="https://test-aki.vercel.app" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://test-aki.vercel.app" />
       </Head>
       <body>
