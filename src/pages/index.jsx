@@ -6,7 +6,7 @@ import Wrapper from "../layout/wrapper";
 import dynamic from "next/dynamic";
 // ✅ OPTIONAL: Dynamic import non-critical components
 // Uncomment jika mau aggressive optimization
-const HomeSix = dynamic(() => import("@/components/homes/home-6"), {
+const HomeSix = dynamic(() => import("./../components/homes/home-6/index"), {
   loading: () => <div style={{ minHeight: "100vh" }}>Loading...</div>,
 });
 const index = () => {
