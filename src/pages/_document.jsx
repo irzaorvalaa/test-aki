@@ -1,20 +1,14 @@
-// src/pages/_document.jsx (UPDATE COMPLETE)
+// src/pages/_document.jsx (ROLLBACK - SIMPLE VERSION)
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html lang="id">
       <Head>
-        <link
-          rel="stylesheet"
-          href="/assets/css/fontawesome-fix.css"
-          media="print"
-          onLoad="this.media='all'"
-        />
-        <noscript>
-          <link rel="stylesheet" href="/assets/css/fontawesome-fix.css" />
-        </noscript>
+        {/* ✅ NORMAL LOAD (no async trick) */}
+        <link rel="stylesheet" href="/assets/css/fontawesome-fix.css" />
 
+        {/* PRELOAD HERO IMAGES - Desktop */}
         <link
           rel="preload"
           as="image"
@@ -28,6 +22,7 @@ export default function Document() {
           fetchpriority="high"
         />
 
+        {/* Preconnect untuk faster resources */}
         <link rel="preconnect" href="https://test-aki.vercel.app" />
         <link rel="dns-prefetch" href="https://test-aki.vercel.app" />
       </Head>
