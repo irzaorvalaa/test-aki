@@ -1,5 +1,5 @@
 import React from "react";
-import HomeSix from "./../components/homes/home-6/index";
+// import HomeSix from "./../components/homes/home-6/index";
 import SEO from "../components/common/seo";
 import OrganizationSchema from "../components/common/organization-schema"; // ✅ IMPORT INI
 import Wrapper from "../layout/wrapper";
