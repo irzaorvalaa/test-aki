@@ -1,11 +1,14 @@
-// src/pages/_document.jsx (UPDATE)
+// src/pages/_document.jsx (UPDATE - ADD FONTAWESOME LINK)
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html lang="id">
       <Head>
-        {/* ✅ PRELOAD HERO IMAGES - Desktop */}
+        {/* ✅ TAMBAH LINK FONTAWESOME FIX CSS */}
+        <link rel="stylesheet" href="/assets/css/fontawesome-fix.css" />
+
+        {/* PRELOAD HERO IMAGES - Desktop */}
         <link
           rel="preload"
           as="image"
