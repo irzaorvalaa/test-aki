@@ -1,42 +1,11 @@
+// src/components/contact/contact-standard-area.jsx (OPTIMIZED - SEO BEAST MODE)
 import React from "react";
-
-// const contact_standard_data = [
-//   {
-//     id: 1,
-//     icon: "fas fa-map-marker-alt",
-//     title: "Lokasi Toko Aki Cirebon",
-//     info: "Toko Aki Sentosa Jaya Mandiri - Jl. Lemahwungkuk No.19, Lemahwungkuk, Kec. Lemahwungkuk, Kota Cirebon, Jawa Barat 45117",
-//     link: "https://maps.app.goo.gl/nnPerGBuvZ6pL1DSA",
-//     actionText: "Lihat di Google Maps",
-//     color: "#2b4eff",
-//     gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
-//   },
-//   // {
-//   //   id: 2,
-//   //   icon: "fas fa-phone-alt",
-//   //   title: "Telepon Cirebon",
-//   //   info: "+62 812-3456-7890",
-//   //   link: "tel:+6281234567890",
-//   //   actionText: "Telepon Sekarang",
-//   //   color: "#f59e0b",
-//   //   gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
-//   // },
-//   // {
-//   //   id: 3,
-//   //   icon: "fas fa-envelope",
-//   //   title: "Email Kami",
-//   //   info: "sentosajayamandiri@gmail.com",
-//   //   link: "mailto:sentosajayamandiri@gmail.com",
-//   //   actionText: "Kirim Email",
-//   //   color: "#10b981",
-//   //   gradient: "linear-gradient(135deg, #10b981 0%, #34d399 100%)",
-//   // },
-// ];
+import Head from "next/head";
 
 const ContactStandardArea = () => {
   const handleWhatsApp = () => {
     const message =
-      "Halo Sentosa Jaya Mandiri Cirebon, saya ingin bertanya tentang produk aki.";
+      "Halo Toko Aki Sentosa Jaya Mandiri Cirebon, saya ingin bertanya tentang produk aki.";
     const phoneNumber = "6281234567890"; // Ganti dengan nomor WA Anda
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
@@ -44,12 +13,73 @@ const ContactStandardArea = () => {
     window.open(whatsappUrl, "_blank");
   };
 
+  // Structured Data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Toko Aki Sentosa Jaya Mandiri Cirebon",
+    image: "https://test-aki.vercel.app/assets/img/logo/logo.png",
+    telephone: "+6281234567890",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Jl. Lemahwungkuk",
+      addressLocality: "Cirebon",
+      addressRegion: "Jawa Barat",
+      postalCode: "45111",
+      addressCountry: "ID",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -6.7063,
+      longitude: 108.5571,
+    },
+    url: "https://test-aki.vercel.app",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "17:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "08:00",
+        closes: "15:00",
+      },
+    ],
+    priceRange: "$$",
+    servesCuisine: "Automotive Battery Sales",
+    areaServed: [
+      "Cirebon",
+      "Kejaksan",
+      "Kesambi",
+      "Harjamukti",
+      "Lemahwungkuk",
+      "Pekalipan",
+      "Palimanan",
+      "Plered",
+      "Weru",
+    ],
+  };
+
   return (
     <>
-      <section className="contact-area pt-120 pb-90">
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
+
+      <section
+        className="contact-area pt-120 pb-90"
+        itemScope
+        itemType="https://schema.org/ContactPage"
+      >
         <div className="container">
           {/* Header Section */}
-          <div className="row justify-content-center mb-60">
+          <header className="row justify-content-center mb-60">
             <div className="col-xl-8 col-lg-10">
               <div className="text-center">
                 <span
@@ -65,8 +95,10 @@ const ContactStandardArea = () => {
                     marginBottom: "20px",
                     letterSpacing: "0.5px",
                   }}
+                  role="text"
+                  aria-label="Kategori Toko"
                 >
-                  TOKO AKI CIREBON
+                  TOKO AKI CIREBON TERPERCAYA
                 </span>
                 <h1
                   style={{
@@ -76,8 +108,9 @@ const ContactStandardArea = () => {
                     color: "#1e293b",
                     lineHeight: "1.2",
                   }}
+                  itemProp="name"
                 >
-                  Hubungi Sentosa Jaya Mandiri
+                  Hubungi Toko Aki Sentosa Jaya Mandiri Cirebon
                 </h1>
                 <p
                   style={{
@@ -85,18 +118,20 @@ const ContactStandardArea = () => {
                     color: "#64748b",
                     lineHeight: "1.6",
                   }}
+                  itemProp="description"
                 >
-                  Toko aki terpercaya di Cirebon melayani penjualan aki mobil,
-                  motor, dan truk dengan layanan antar pasang gratis
+                  Toko aki terpercaya di Cirebon sejak 1995 melayani penjualan
+                  aki mobil, aki motor, aki truk, dan aki kendaraan berat dengan
+                  layanan antar pasang gratis area Cirebon Raya
                 </p>
               </div>
             </div>
-          </div>
+          </header>
 
           {/* WhatsApp CTA Card - Priority */}
           <div className="row justify-content-center mb-60">
             <div className="col-xl-10 col-lg-10">
-              <div
+              <article
                 style={{
                   background:
                     "linear-gradient(135deg, #25D366 0%, #1fb855 100%)",
@@ -107,6 +142,8 @@ const ContactStandardArea = () => {
                   position: "relative",
                   overflow: "hidden",
                 }}
+                itemScope
+                itemType="https://schema.org/ContactPoint"
               >
                 {/* Decorative elements */}
                 <div
@@ -119,6 +156,7 @@ const ContactStandardArea = () => {
                     top: "-100px",
                     right: "-50px",
                   }}
+                  aria-hidden="true"
                 ></div>
                 <div
                   style={{
@@ -130,6 +168,7 @@ const ContactStandardArea = () => {
                     bottom: "-60px",
                     left: "-40px",
                   }}
+                  aria-hidden="true"
                 ></div>
 
                 <div className="row align-items-center">
@@ -158,6 +197,8 @@ const ContactStandardArea = () => {
                             boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
                             flexShrink: 0,
                           }}
+                          role="img"
+                          aria-label="WhatsApp Icon"
                         >
                           <i
                             className="fab fa-whatsapp"
@@ -165,11 +206,12 @@ const ContactStandardArea = () => {
                               fontSize: "45px",
                               color: "#25D366",
                             }}
+                            aria-hidden="true"
                           ></i>
                         </div>
 
                         <div style={{ textAlign: "left" }}>
-                          <h3
+                          <h2
                             style={{
                               color: "white",
                               fontSize: "32px",
@@ -178,16 +220,18 @@ const ContactStandardArea = () => {
                               lineHeight: "1.2",
                             }}
                           >
-                            Chat WhatsApp Kami
-                          </h3>
+                            Chat WhatsApp Toko Aki Cirebon
+                          </h2>
                           <p
                             style={{
                               color: "rgba(255,255,255,0.95)",
                               fontSize: "16px",
                               marginBottom: "0",
                             }}
+                            itemProp="description"
                           >
                             Sentosa Jaya Mandiri Cirebon • Respon Cepat 5 Menit
+                            • Gratis Konsultasi Aki
                           </p>
                         </div>
                       </div>
@@ -224,20 +268,21 @@ const ContactStandardArea = () => {
                         e.currentTarget.style.boxShadow =
                           "0 8px 25px rgba(0,0,0,0.2)";
                       }}
+                      aria-label="Hubungi via WhatsApp Toko Aki Sentosa Jaya Mandiri Cirebon"
+                      type="button"
                     >
                       <i
                         className="fab fa-whatsapp"
                         style={{ fontSize: "22px" }}
+                        aria-hidden="true"
                       ></i>
                       Hubungi Sekarang
                     </button>
                   </div>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
-
-          {/* Contact Info Cards */}
 
           {/* Additional Info Section */}
           <div className="row justify-content-center mb-50">
@@ -254,12 +299,14 @@ const ContactStandardArea = () => {
                 <div className="row align-items-center">
                   {/* Jam Operasional */}
                   <div className="col-md-6 mb-4 mb-md-0">
-                    <div
+                    <article
                       style={{
                         display: "flex",
                         alignItems: "flex-start",
                         gap: "20px",
                       }}
+                      itemScope
+                      itemType="https://schema.org/OpeningHoursSpecification"
                     >
                       <div
                         style={{
@@ -274,14 +321,17 @@ const ContactStandardArea = () => {
                           flexShrink: 0,
                           boxShadow: "0 8px 20px rgba(99,102,241,0.3)",
                         }}
+                        role="img"
+                        aria-label="Ikon Jam Operasional"
                       >
                         <i
                           className="far fa-clock"
                           style={{ fontSize: "28px", color: "white" }}
+                          aria-hidden="true"
                         ></i>
                       </div>
                       <div>
-                        <h4
+                        <h3
                           style={{
                             fontSize: "20px",
                             fontWeight: "700",
@@ -289,8 +339,8 @@ const ContactStandardArea = () => {
                             color: "#1e293b",
                           }}
                         >
-                          Jam Operasional
-                        </h4>
+                          Jam Operasional Toko Aki Cirebon
+                        </h3>
                         <p
                           style={{
                             fontSize: "15px",
@@ -298,7 +348,8 @@ const ContactStandardArea = () => {
                             marginBottom: "6px",
                           }}
                         >
-                          <strong>Senin - Jumat:</strong> 08:00 - 17:00 WIB
+                          <strong>Senin - Jumat:</strong>{" "}
+                          <time>08:00 - 17:00 WIB</time>
                         </p>
                         <p
                           style={{
@@ -307,7 +358,7 @@ const ContactStandardArea = () => {
                             marginBottom: "6px",
                           }}
                         >
-                          <strong>Sabtu:</strong> 08:00 - 15:00 WIB
+                          <strong>Sabtu:</strong> <time>08:00 - 15:00 WIB</time>
                         </p>
                         <p
                           style={{
@@ -320,18 +371,31 @@ const ContactStandardArea = () => {
                         >
                           Minggu & Tanggal Merah: Tutup
                         </p>
+                        <p
+                          style={{
+                            fontSize: "13px",
+                            color: "#22c55e",
+                            marginTop: "8px",
+                            marginBottom: "0",
+                            fontWeight: "600",
+                          }}
+                        >
+                          ✓ Layanan Jumper Aki Darurat 24/7
+                        </p>
                       </div>
-                    </div>
+                    </article>
                   </div>
 
                   {/* Area Layanan */}
                   <div className="col-md-6">
-                    <div
+                    <article
                       style={{
                         display: "flex",
                         alignItems: "flex-start",
                         gap: "20px",
                       }}
+                      itemScope
+                      itemType="https://schema.org/Service"
                     >
                       <div
                         style={{
@@ -346,23 +410,27 @@ const ContactStandardArea = () => {
                           flexShrink: 0,
                           boxShadow: "0 8px 20px rgba(236,72,153,0.3)",
                         }}
+                        role="img"
+                        aria-label="Ikon Area Layanan"
                       >
                         <i
                           className="fas fa-map-marked-alt"
                           style={{ fontSize: "28px", color: "white" }}
+                          aria-hidden="true"
                         ></i>
                       </div>
                       <div>
-                        <h4
+                        <h3
                           style={{
                             fontSize: "20px",
                             fontWeight: "700",
                             marginBottom: "12px",
                             color: "#1e293b",
                           }}
+                          itemProp="serviceType"
                         >
-                          Area Layanan Cirebon
-                        </h4>
+                          Area Layanan Antar Pasang Aki Cirebon
+                        </h3>
                         <p
                           style={{
                             fontSize: "15px",
@@ -370,10 +438,13 @@ const ContactStandardArea = () => {
                             marginBottom: "12px",
                             lineHeight: "1.6",
                           }}
+                          itemProp="areaServed"
                         >
-                          Kedawung • Kejaksan • Kesambi
+                          Kedawung • Kejaksan • Kesambi • Harjamukti
                           <br />
-                          Harjamukti • Lemahwungkuk • Pekalipan
+                          Lemahwungkuk • Pekalipan • Palimanan • Plered
+                          <br />
+                          Weru • Tengah Tani • Lemah Abang • Sumber
                         </p>
                         <div
                           style={{
@@ -389,12 +460,16 @@ const ContactStandardArea = () => {
                             fontWeight: "700",
                             boxShadow: "0 4px 15px rgba(34,197,94,0.3)",
                           }}
+                          role="text"
                         >
-                          <i className="fas fa-check-circle"></i>
-                          <span>Gratis Ongkir & Pasang</span>
+                          <i
+                            className="fas fa-check-circle"
+                            aria-hidden="true"
+                          ></i>
+                          <span>Gratis Ongkir & Pasang Aki</span>
                         </div>
                       </div>
-                    </div>
+                    </article>
                   </div>
                 </div>
               </div>
@@ -404,7 +479,7 @@ const ContactStandardArea = () => {
           {/* SEO Info Section */}
           <div className="row justify-content-center">
             <div className="col-xl-10">
-              <div
+              <article
                 style={{
                   background:
                     "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
@@ -413,17 +488,21 @@ const ContactStandardArea = () => {
                   border: "2px solid #dee2e6",
                   textAlign: "center",
                 }}
+                itemScope
+                itemType="https://schema.org/LocalBusiness"
               >
-                <h3
+                <h2
                   style={{
                     fontSize: "28px",
                     fontWeight: "700",
                     color: "#1e293b",
                     marginBottom: "20px",
                   }}
+                  itemProp="name"
                 >
-                  Toko Aki Sentosa Jaya Mandiri Cirebon
-                </h3>
+                  Toko Aki Sentosa Jaya Mandiri Cirebon - Aki Terlengkap Harga
+                  Terbaik
+                </h2>
                 <p
                   style={{
                     fontSize: "16px",
@@ -433,29 +512,42 @@ const ContactStandardArea = () => {
                     maxWidth: "850px",
                     margin: "0 auto",
                   }}
+                  itemProp="description"
                 >
-                  <strong>Sentosa Jaya Mandiri</strong> adalah toko aki
-                  terpercaya di <strong>Cirebon</strong> yang melayani penjualan
-                  aki mobil, aki motor, dan aki truk untuk seluruh wilayah{" "}
-                  <strong>Kota Cirebon</strong>. Berlokasi strategis di{" "}
-                  <strong>Lemahwungkuk Cirebon</strong>, kami melayani area{" "}
-                  <strong>Kejaksan</strong>, <strong>Kesambi</strong>,{" "}
-                  <strong>Harjamukti</strong>, <strong>Pekalipan</strong>, dan
+                  <strong>Toko Aki Sentosa Jaya Mandiri</strong> adalah toko aki
+                  terpercaya di <strong>Cirebon</strong> yang melayani penjualan{" "}
+                  <strong>aki mobil</strong>, <strong>aki motor</strong>,{" "}
+                  <strong>aki truk</strong>, dan{" "}
+                  <strong>aki kendaraan berat</strong> untuk seluruh wilayah{" "}
+                  <strong>Kota Cirebon</strong> dan sekitarnya. Berlokasi
+                  strategis di <strong>Lemahwungkuk Cirebon</strong>, kami
+                  melayani area <strong>Kejaksan</strong>,{" "}
+                  <strong>Kesambi</strong>, <strong>Harjamukti</strong>,{" "}
+                  <strong>Pekalipan</strong>, <strong>Kedawung</strong>, dan
                   sepanjang <strong>jalur Pantura Cirebon</strong>. Kami juga
                   menjangkau wilayah kabupaten seperti{" "}
                   <strong>Palimanan</strong>, <strong>Plered</strong>,{" "}
                   <strong>Weru</strong>, <strong>Tengah Tani</strong>,{" "}
                   <strong>Lemah Abang</strong>, <strong>Sumber</strong>,{" "}
-                  <strong>Talun</strong>, dan <strong>Losari</strong>. Dengan
-                  layanan antar pasang gratis, jumper aki darurat 24 jam, dan
-                  garansi resmi,{" "}
+                  <strong>Talun</strong>, <strong>Losari</strong>,{" "}
+                  <strong>Gebang</strong>, dan <strong>Babakan</strong>. Dengan
+                  layanan <strong>antar pasang aki gratis</strong>,{" "}
+                  <strong>jumper aki darurat 24 jam</strong>,{" "}
+                  <strong>garansi resmi</strong>, dan{" "}
+                  <strong>harga aki terbaik di Cirebon</strong>,{" "}
                   <strong>Toko Aki Sentosa Jaya Mandiri Cirebon</strong> menjadi
-                  pilihan utama untuk kebutuhan aki kendaraan di{" "}
-                  <strong>Cirebon</strong> dan sekitarnya. Hubungi kami untuk
-                  mendapatkan aki berkualitas dengan harga terbaik, gratis
-                  ongkir untuk wilayah <strong>Cirebon Raya</strong>.
+                  pilihan utama untuk kebutuhan <strong>aki GS Astra</strong>,{" "}
+                  <strong>aki Yuasa</strong>, <strong>aki Incoe</strong>,{" "}
+                  <strong>aki Aspira</strong>, <strong>aki Motobatt</strong>,
+                  dan berbagai merek aki terkemuka lainnya. Hubungi kami
+                  sekarang untuk mendapatkan{" "}
+                  <strong>aki berkualitas original</strong> dengan{" "}
+                  <strong>harga terjangkau</strong>,{" "}
+                  <strong>gratis ongkir</strong> untuk wilayah{" "}
+                  <strong>Cirebon Raya</strong>, dan{" "}
+                  <strong>garansi 1 tahun</strong> untuk semua produk aki.
                 </p>
-              </div>
+              </article>
             </div>
           </div>
         </div>
