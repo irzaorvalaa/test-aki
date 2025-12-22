@@ -18,6 +18,7 @@ export default function App({ Component, pageProps }) {
       duration: 800,
       once: true,
       mirror: false,
+      offset: 50,
     });
   }, []);
 

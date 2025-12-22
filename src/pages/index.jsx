@@ -3,7 +3,12 @@ import HomeSix from "./../components/homes/home-6/index";
 import SEO from "../components/common/seo";
 import OrganizationSchema from "../components/common/organization-schema"; // ✅ IMPORT INI
 import Wrapper from "../layout/wrapper";
-
+import dynamic from "next/dynamic";
+// ✅ OPTIONAL: Dynamic import non-critical components
+// Uncomment jika mau aggressive optimization
+const HomeSix = dynamic(() => import("@/components/homes/home-6"), {
+  loading: () => <div style={{ minHeight: "100vh" }}>Loading...</div>,
+});
 const index = () => {
   return (
     <Wrapper>
