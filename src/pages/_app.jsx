@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { poppins, rubik } from "../styles/fonts";
+import "@/public/assets/css/fontawesome-fix.css";
 
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");

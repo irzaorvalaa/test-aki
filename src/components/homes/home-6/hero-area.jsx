@@ -1,11 +1,9 @@
-// src/components/homes/home-6/hero-area.jsx (OPTIMIZED - NO CLS!)
 import React from "react";
 import Image from "next/image";
 
 const HeroArea = () => {
   return (
     <>
-      {/* Desktop Banner */}
       <div className="hero-image-desktop">
         <Image
           src="/assets/img/bg/homepage-sjm2rev.png"
@@ -13,9 +11,9 @@ const HeroArea = () => {
           width={1920}
           height={544}
           priority
-          fetchPriority="high" // ✅ TAMBAH INI - Force high priority
-          quality={75} // ✅ TURUNKAN dari 90 ke 75 (cukup bagus, lebih ringan)
-          sizes="100vw" // ✅ TAMBAH untuk responsive optimization
+          fetchPriority="high"
+          quality={75}
+          sizes="100vw"
           style={{
             width: "100%",
             height: "auto",
@@ -24,7 +22,6 @@ const HeroArea = () => {
         />
       </div>
 
-      {/* Mobile Banner */}
       <div className="hero-image-mobile">
         <Image
           src="/assets/img/logo/roll.jpg"
@@ -32,9 +29,9 @@ const HeroArea = () => {
           width={1080}
           height={1920}
           priority
-          fetchPriority="high" // ✅ TAMBAH INI
-          quality={75} // ✅ TURUNKAN dari 90 ke 75
-          sizes="100vw" // ✅ TAMBAH
+          fetchPriority="high"
+          quality={75}
+          sizes="100vw"
           style={{
             width: "100%",
             height: "auto",
@@ -49,7 +46,6 @@ const HeroArea = () => {
           width: 100%;
           margin: 0;
           padding: 0;
-          /* ✅ TAMBAH aspect-ratio untuk prevent CLS */
           aspect-ratio: 1920 / 544;
         }
 
@@ -64,7 +60,6 @@ const HeroArea = () => {
 
           .hero-image-mobile {
             display: block;
-            /* ✅ TAMBAH aspect-ratio untuk prevent CLS */
             aspect-ratio: 1080 / 1920;
           }
         }

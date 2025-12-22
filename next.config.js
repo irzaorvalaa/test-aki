@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
 
-  swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
@@ -24,10 +22,8 @@ const nextConfig = {
     qualities: [75, 90],
   },
 
-  // Compression
   compress: true,
 
-  // Headers for SEO
   async headers() {
     return [
       {
@@ -46,7 +42,6 @@ const nextConfig = {
     ];
   },
 
-  // Redirects (301)
   async redirects() {
     return [
       {
