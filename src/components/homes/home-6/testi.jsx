@@ -1,4 +1,4 @@
-// src/components/homes/home-6/testi.jsx (NEUTRAL COLORS + SMALLER SIZE)
+// src/components/homes/home-6/testi.jsx (FIXED TOUCH TARGETS)
 import React from "react";
 
 const testimonials = [
@@ -78,7 +78,7 @@ class Testi extends React.Component {
       <section
         className="testimonial-area pt-90 pb-90"
         style={{
-          background: "#f8f9fa", // ✅ Neutral light gray
+          background: "#f8f9fa",
           position: "relative",
           overflow: "hidden",
         }}
@@ -93,7 +93,7 @@ class Testi extends React.Component {
                   style={{
                     display: "inline-block",
                     padding: "8px 18px",
-                    background: "#e9ecef", // ✅ Neutral gray
+                    background: "#e9ecef",
                     color: "#495057",
                     borderRadius: "50px",
                     fontSize: "12px",
@@ -107,9 +107,9 @@ class Testi extends React.Component {
                 </span>
                 <h2
                   style={{
-                    fontSize: "32px", // ✅ Smaller
+                    fontSize: "32px",
                     fontWeight: "700",
-                    color: "#212529", // ✅ Dark neutral
+                    color: "#212529",
                     marginBottom: "12px",
                     lineHeight: "1.3",
                   }}
@@ -118,7 +118,7 @@ class Testi extends React.Component {
                 </h2>
                 <p
                   style={{
-                    fontSize: "15px", // ✅ Smaller
+                    fontSize: "15px",
                     color: "#6c757d",
                     lineHeight: "1.6",
                   }}
@@ -135,11 +135,11 @@ class Testi extends React.Component {
               <div
                 style={{
                   background: "white",
-                  borderRadius: "20px", // ✅ Smaller radius
-                  padding: "40px 35px", // ✅ Smaller padding
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)", // ✅ Subtle shadow
+                  borderRadius: "20px",
+                  padding: "40px 35px",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
                   position: "relative",
-                  minHeight: "320px", // ✅ Smaller height
+                  minHeight: "320px",
                   border: "1px solid #e9ecef",
                 }}
               >
@@ -151,10 +151,10 @@ class Testi extends React.Component {
                     >
                       <div
                         style={{
-                          width: "120px", // ✅ Smaller avatar
+                          width: "120px",
                           height: "120px",
                           borderRadius: "50%",
-                          background: "#495057", // ✅ Neutral dark gray
+                          background: "#495057",
                           padding: "4px",
                           margin: "0 auto",
                         }}
@@ -168,7 +168,7 @@ class Testi extends React.Component {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            fontSize: "40px", // ✅ Smaller
+                            fontSize: "40px",
                             fontWeight: "700",
                             color: "#495057",
                           }}
@@ -183,9 +183,9 @@ class Testi extends React.Component {
                           position: "absolute",
                           bottom: "5px",
                           right: "5px",
-                          width: "35px", // ✅ Smaller badge
+                          width: "35px",
                           height: "35px",
-                          background: "#28a745", // ✅ Standard green
+                          background: "#28a745",
                           borderRadius: "50%",
                           display: "flex",
                           alignItems: "center",
@@ -204,7 +204,7 @@ class Testi extends React.Component {
                     <div style={{ marginTop: "15px" }}>
                       <h4
                         style={{
-                          fontSize: "18px", // ✅ Smaller
+                          fontSize: "18px",
                           fontWeight: "700",
                           color: "#212529",
                           marginBottom: "4px",
@@ -255,7 +255,7 @@ class Testi extends React.Component {
                             fontSize: "16px",
                             color:
                               i < currentTesti.rating ? "#ffc107" : "#e9ecef",
-                          }} // ✅ Standard yellow
+                          }}
                         ></i>
                       ))}
                       <span
@@ -271,7 +271,7 @@ class Testi extends React.Component {
 
                     <p
                       style={{
-                        fontSize: "15px", // ✅ Smaller text
+                        fontSize: "15px",
                         lineHeight: "1.7",
                         color: "#495057",
                         marginBottom: "18px",
@@ -285,9 +285,9 @@ class Testi extends React.Component {
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "6px",
-                        background: "#495057", // ✅ Neutral dark
+                        background: "#495057",
                         color: "white",
-                        padding: "8px 16px", // ✅ Smaller padding
+                        padding: "8px 16px",
                         borderRadius: "50px",
                         fontSize: "12px",
                         fontWeight: "600",
@@ -299,7 +299,7 @@ class Testi extends React.Component {
                   </div>
                 </div>
 
-                {/* Navigation Arrows */}
+                {/* ✅ FIXED: Navigation Arrows - 48x48px minimum */}
                 <button
                   onClick={this.prevSlide}
                   style={{
@@ -307,18 +307,27 @@ class Testi extends React.Component {
                     left: "15px",
                     top: "50%",
                     transform: "translateY(-50%)",
-                    width: "40px", // ✅ Smaller button
-                    height: "40px",
+                    width: "48px", // ✅ Changed from 40px to 48px
+                    height: "48px", // ✅ Changed from 40px to 48px
                     borderRadius: "50%",
                     border: "2px solid #dee2e6",
                     background: "white",
                     color: "#495057",
-                    fontSize: "16px",
+                    fontSize: "18px", // ✅ Slightly bigger icon
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#495057";
+                    e.currentTarget.style.color = "white";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "white";
+                    e.currentTarget.style.color = "#495057";
                   }}
                   aria-label="Testimoni Sebelumnya"
                 >
@@ -332,18 +341,27 @@ class Testi extends React.Component {
                     right: "15px",
                     top: "50%",
                     transform: "translateY(-50%)",
-                    width: "40px",
-                    height: "40px",
+                    width: "48px", // ✅ Changed from 40px to 48px
+                    height: "48px", // ✅ Changed from 40px to 48px
                     borderRadius: "50%",
                     border: "2px solid #dee2e6",
                     background: "white",
                     color: "#495057",
-                    fontSize: "16px",
+                    fontSize: "18px", // ✅ Slightly bigger icon
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#495057";
+                    e.currentTarget.style.color = "white";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "white";
+                    e.currentTarget.style.color = "#495057";
                   }}
                   aria-label="Testimoni Selanjutnya"
                 >
@@ -351,12 +369,12 @@ class Testi extends React.Component {
                 </button>
               </div>
 
-              {/* Dots */}
+              {/* ✅ FIXED: Dots - minimum 48x48px touch target */}
               <div
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  gap: "10px",
+                  gap: "12px", // ✅ Increased gap for easier tap
                   marginTop: "30px",
                 }}
               >
@@ -365,14 +383,16 @@ class Testi extends React.Component {
                     key={index}
                     onClick={() => this.goToSlide(index)}
                     style={{
-                      width: currentIndex === index ? "30px" : "10px", // ✅ Smaller dots
-                      height: "10px",
+                      width: currentIndex === index ? "48px" : "48px", // ✅ Fixed width 48px
+                      height: "10px", // ✅ Visual height stays 10px
                       borderRadius: "5px",
                       border: "none",
                       background:
                         currentIndex === index ? "#495057" : "#dee2e6",
                       cursor: "pointer",
                       transition: "all 0.3s ease",
+                      padding: "19px 0", // ✅ Add vertical padding to make touch area 48px
+                      position: "relative",
                     }}
                     aria-label={`Testimoni ${index + 1}`}
                   />
@@ -381,7 +401,7 @@ class Testi extends React.Component {
             </div>
           </div>
 
-          {/* Stats - Smaller & Neutral */}
+          {/* Stats */}
           <div className="row justify-content-center mt-50">
             <div className="col-lg-9">
               <div
@@ -398,7 +418,7 @@ class Testi extends React.Component {
                     <div>
                       <h3
                         style={{
-                          fontSize: "36px", // ✅ Smaller
+                          fontSize: "36px",
                           fontWeight: "700",
                           marginBottom: "8px",
                           color: "#212529",
