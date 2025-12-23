@@ -1,29 +1,12 @@
+// src/components/social-links.jsx (INSTAGRAM ONLY - CUSTOM STYLED)
 import Link from "next/link";
 
 const social_links = [
   {
-    link: "http://facebook.com",
+    link: "https://www.instagram.com/toko_aki_sentosajayamandiri/", // ✅ Ganti dengan Instagram URL kamu
     target: "_blank",
-    icon: "fab fa-facebook-f",
-    color: "one",
-  },
-  {
-    link: "http://twitter.com",
-    target: "_blank",
-    icon: "fab fa-twitter",
-    color: "two",
-  },
-  {
-    link: "https://www.linkedin.com",
-    target: "_blank",
-    icon: "fab fa-linkedin",
-    color: "three",
-  },
-  {
-    link: "https://www.skype.com",
-    target: "_blank",
-    icon: "fab fa-skype",
-    color: "four",
+    icon: "fab fa-instagram",
+    name: "Instagram",
   },
 ];
 
@@ -34,12 +17,49 @@ const SocialLinks = () => {
         <Link
           key={i}
           href={l.link}
-          className={l.color}
           target={l.target ? l.target : ""}
+          className="instagram-link"
+          aria-label={l.name}
         >
           <i className={l.icon}></i>
         </Link>
       ))}
+
+      {/* ✅ CUSTOM INSTAGRAM STYLING */}
+      <style jsx>{`
+        .instagram-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          background: linear-gradient(
+            135deg,
+            #405de6 0%,
+            #5851db 10%,
+            #833ab4 25%,
+            #c13584 50%,
+            #e1306c 75%,
+            #fd1d1d 100%
+          );
+          color: white;
+          font-size: 20px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
+          text-decoration: none;
+        }
+
+        .instagram-link:hover {
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 0 6px 20px rgba(225, 48, 108, 0.5);
+        }
+
+        .instagram-link i {
+          position: relative;
+          z-index: 2;
+        }
+      `}</style>
     </>
   );
 };
@@ -60,27 +80,13 @@ export const CopyRight = () => {
   return <>{copy_right}</>;
 };
 
-//  social link data 02
+//  social link data 02 - INSTAGRAM ONLY
 const social_links_two = [
   {
-    link: "http://facebook.com",
+    link: "https://www.instagram.com/sentosajayamandiri_cirebon/", // ✅ Ganti dengan Instagram URL kamu
     target: "_blank",
-    icon: "fab fa-facebook-f ",
-  },
-  {
-    link: "http://twitter.com",
-    target: "_blank",
-    icon: "fab fa-linkedin-in",
-  },
-  {
-    link: "https://www.linkedin.com",
-    target: "_blank",
-    icon: "fab fa-twitter",
-  },
-  {
-    link: "https://www.youtube.com",
-    target: "_blank",
-    icon: "fab fa-pinterest-p",
+    icon: "fab fa-instagram",
+    name: "Instagram",
   },
 ];
 
@@ -91,13 +97,72 @@ export const SocialLinksTwo = () => {
         <Link
           key={i}
           target={link.target}
-          className={`icon-color-${link.color}`}
           href={link.link}
+          className="instagram-link-two"
+          aria-label={link.name}
         >
           <i className={link.icon}></i>
           <span></span>
         </Link>
       ))}
+
+      {/* ✅ CUSTOM INSTAGRAM STYLING - VERSION 2 */}
+      <style jsx>{`
+        .instagram-link-two {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          background: linear-gradient(
+            135deg,
+            #405de6 0%,
+            #5851db 10%,
+            #833ab4 25%,
+            #c13584 50%,
+            #e1306c 75%,
+            #fd1d1d 100%
+          );
+          color: white;
+          font-size: 22px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4);
+          text-decoration: none;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .instagram-link-two:hover {
+          transform: translateY(-5px) scale(1.1);
+          box-shadow: 0 8px 25px rgba(225, 48, 108, 0.6);
+        }
+
+        .instagram-link-two i {
+          position: relative;
+          z-index: 2;
+        }
+
+        .instagram-link-two span {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(
+            circle at 30% 107%,
+            #fdf497 0%,
+            #fdf497 5%,
+            #fd5949 45%,
+            #d6249f 60%,
+            #285aeb 90%
+          );
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .instagram-link-two:hover span {
+          opacity: 1;
+        }
+      `}</style>
     </>
   );
 };

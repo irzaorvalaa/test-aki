@@ -47,7 +47,6 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
             <div className="row">
               <div className="col-xl-4 col-lg-6 col-md-8">
                 <div className="footer-widget mb-40">
-                  {/* ✅ LOGO PAKAI NEXT IMAGE */}
                   <div className="footer-text">
                     <Link href="/" className="footer-logo-link">
                       <Image
@@ -76,16 +75,13 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
                 </div>
               </div>
 
-              {/* Quick Links - Custom Layout */}
               {footer_data.map((item, i) => (
                 <div key={i} className="col-xl-4 col-lg-6 col-md-4">
                   <div className="footer-widget mb-40">
-                    {/* Title Center */}
                     <h3 style={{ textAlign: "center", marginBottom: "25px" }}>
                       {item.title}
                     </h3>
 
-                    {/* 2 Kolom Layout */}
                     <div
                       style={{
                         display: "grid",
@@ -93,7 +89,6 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
                         gap: "20px",
                       }}
                     >
-                      {/* Kolom Kiri - 3 link pertama */}
                       <ul>
                         {item.links.slice(0, 3).map((link, index) => (
                           <li key={index}>
@@ -102,7 +97,6 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
                         ))}
                       </ul>
 
-                      {/* Kolom Kanan - 3 link terakhir */}
                       <ul>
                         {item.links.slice(3, 6).map((link, index) => (
                           <li key={index}>
