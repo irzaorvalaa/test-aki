@@ -1,3 +1,4 @@
+// src/components/common/local-business-schema.jsx
 import Head from "next/head";
 
 const LocalBusinessSchema = () => {
@@ -48,6 +49,7 @@ const LocalBusinessSchema = () => {
       ratingValue: "4.8",
       reviewCount: "127",
     },
+    // ✅ UPDATE: Area served sesuai 10 kecamatan
     areaServed: [
       {
         "@type": "City",
@@ -55,15 +57,11 @@ const LocalBusinessSchema = () => {
       },
       {
         "@type": "Place",
-        name: "Kejaksan",
-      },
-      {
-        "@type": "Place",
         name: "Kesambi",
       },
       {
         "@type": "Place",
-        name: "Harjamukti",
+        name: "Kedawung",
       },
       {
         "@type": "Place",
@@ -71,19 +69,31 @@ const LocalBusinessSchema = () => {
       },
       {
         "@type": "Place",
-        name: "Pekalipan",
+        name: "Harjamukti",
       },
       {
         "@type": "Place",
-        name: "Palimanan",
+        name: "Talun",
       },
       {
         "@type": "Place",
-        name: "Plered",
+        name: "Mundu",
       },
       {
         "@type": "Place",
-        name: "Weru",
+        name: "Kejaksan",
+      },
+      {
+        "@type": "Place",
+        name: "Gunung Jati",
+      },
+      {
+        "@type": "Place",
+        name: "Lemahabang",
+      },
+      {
+        "@type": "Place",
+        name: "Plumbon",
       },
     ],
     hasOfferCatalog: {
