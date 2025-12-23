@@ -8,20 +8,17 @@ const WhatsAppFloating = () => {
     setMounted(true);
   }, []);
 
-  // Hanya render di client untuk menghindari hydration error
   if (!mounted) return null;
 
-  // Handle WhatsApp click
   const handleWhatsAppClick = () => {
     const message = "Halo SJM Aki Cirebon, saya ingin menanyakan tentang aki";
-    const phoneNumber = "6281234567890";
+    const phoneNumber = "6281779954236";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
     window.open(whatsappUrl, "_blank");
   };
 
-  // Handle Google Maps click
   const handleMapsClick = () => {
     const mapsUrl =
       "https://www.google.com/maps/place/Toko+Aki+%22Sentosa+Jaya+Mandiri%22/@-6.7200727,108.5658902,17z/data=!3m1!4b1!4m6!3m5!1s0x2e6ee3b9741cae97:0x7efae4ea6b92ca7e!8m2!3d-6.7200727!4d108.5684651!16s%2Fg%2F11svtkh39t?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D";
@@ -30,31 +27,31 @@ const WhatsAppFloating = () => {
 
   return (
     <>
-      {/* Floating Buttons Container */}
       <div className="floating-buttons-container">
         {/* Google Maps Button */}
-        <div className="floating-btn-item">
-          <div className="floating-btn maps-btn" onClick={handleMapsClick}>
+        <div className="floating-btn-wrapper">
+          <button className="floating-btn maps-btn" onClick={handleMapsClick}>
             <i className="fas fa-map-marker-alt"></i>
-          </div>
+          </button>
           <span className="tooltip">Lokasi Toko</span>
         </div>
 
         {/* WhatsApp Button */}
-        <div className="floating-btn-item">
-          <div
+        <div className="floating-btn-wrapper">
+          <div className="pulse-container">
+            <div className="pulse-ring"></div>
+          </div>
+          <button
             className="floating-btn whatsapp-btn"
             onClick={handleWhatsAppClick}
           >
-            <div className="pulse-ring"></div>
             <i className="fab fa-whatsapp"></i>
-          </div>
+          </button>
           <span className="tooltip">WhatsApp Kami</span>
         </div>
       </div>
 
       <style jsx>{`
-        /* Container for stacked buttons */
         .floating-buttons-container {
           position: fixed;
           bottom: 30px;
@@ -65,19 +62,20 @@ const WhatsAppFloating = () => {
           z-index: 999;
         }
 
-        /* Wrapper for button + tooltip */
-        .floating-btn-item {
+        /* Wrapper - NO CLICK */
+        .floating-btn-wrapper {
           position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
+          width: 60px;
+          height: 60px;
+          pointer-events: none;
         }
 
-        /* Base button style */
+        /* Button - EXACT CLICK AREA */
         .floating-btn {
           width: 60px;
           height: 60px;
           border-radius: 50%;
+          border: none;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -85,7 +83,9 @@ const WhatsAppFloating = () => {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
           transition: all 0.3s ease;
           position: relative;
-          overflow: visible;
+          z-index: 10;
+          pointer-events: auto;
+          overflow: hidden; /* ✅ FORCE CUT */
         }
 
         .floating-btn:hover {
@@ -96,11 +96,11 @@ const WhatsAppFloating = () => {
         .floating-btn i {
           font-size: 32px;
           color: white;
-          position: relative;
           z-index: 3;
+          pointer-events: none;
         }
 
-        /* Google Maps Button - Red */
+        /* Maps Button */
         .maps-btn {
           background: linear-gradient(135deg, #ea4335 0%, #d32f2f 100%);
         }
@@ -109,7 +109,7 @@ const WhatsAppFloating = () => {
           background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
         }
 
-        /* WhatsApp Button - Green */
+        /* WhatsApp Button */
         .whatsapp-btn {
           background: #25d366;
         }
@@ -118,26 +118,37 @@ const WhatsAppFloating = () => {
           background: #20ba5a;
         }
 
-        /* Pulse animation - real element (no pseudo-element conflict) */
+        /* ✅ Pulse container - BEHIND button, NO CLICK */
+        .pulse-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          z-index: 1;
+        }
+
         .pulse-ring {
           position: absolute;
-          width: 100%;
-          height: 100%;
+          width: 60px;
+          height: 60px;
           border-radius: 50%;
           background: #25d366;
-          opacity: 0.5;
           animation: pulse 2s infinite;
-          z-index: 1;
           pointer-events: none;
         }
 
         @keyframes pulse {
           0% {
             transform: scale(1);
-            opacity: 0.5;
+            opacity: 0.6;
           }
-          50% {
-            transform: scale(1.2);
+          70% {
+            transform: scale(1.4);
             opacity: 0;
           }
           100% {
@@ -146,7 +157,7 @@ const WhatsAppFloating = () => {
           }
         }
 
-        /* Tooltip - Real Element (bukan pseudo) */
+        /* Tooltip */
         .tooltip {
           position: absolute;
           right: 75px;
@@ -166,7 +177,6 @@ const WhatsAppFloating = () => {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        /* Arrow untuk tooltip */
         .tooltip::after {
           content: "";
           position: absolute;
@@ -180,18 +190,22 @@ const WhatsAppFloating = () => {
           border-left: 8px solid rgba(0, 0, 0, 0.9);
         }
 
-        /* Show tooltip on hover */
-        .floating-btn-item:hover .tooltip {
+        .floating-btn-wrapper:hover .tooltip {
           opacity: 1;
           right: 80px;
         }
 
-        /* Mobile Responsive */
+        /* Mobile */
         @media (max-width: 768px) {
           .floating-buttons-container {
             bottom: 20px;
             right: 20px;
             gap: 12px;
+          }
+
+          .floating-btn-wrapper {
+            width: 50px;
+            height: 50px;
           }
 
           .floating-btn {
@@ -203,7 +217,16 @@ const WhatsAppFloating = () => {
             font-size: 26px;
           }
 
-          /* Hide tooltips on mobile */
+          .pulse-container {
+            width: 50px;
+            height: 50px;
+          }
+
+          .pulse-ring {
+            width: 50px;
+            height: 50px;
+          }
+
           .tooltip {
             display: none;
           }

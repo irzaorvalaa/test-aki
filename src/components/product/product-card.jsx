@@ -1,6 +1,6 @@
+// src/components/product/product-card.jsx
 import React, { useState, useEffect, useRef } from "react";
 
-// ✅ 1. CONSTANTS FIRST
 const brandNames = {
   "amaron-go": "Amaron Go",
   "amaron-onyx": "Amaron Onyx",
@@ -18,7 +18,6 @@ const brandColors = {
   incoe: "#1f2937",
 };
 
-// ✅ 2. COMPONENT SECOND
 const ProductCard = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
@@ -34,12 +33,11 @@ const ProductCard = ({ product }) => {
   useEffect(() => {
     const updateViewport = () => {
       setViewportWidth(window.innerWidth);
-      setViewportHeight(window.visualViewport?.height || window.innerHeight); // ✅ Use visualViewport
+      setViewportHeight(window.visualViewport?.height || window.innerHeight);
     };
 
     updateViewport();
 
-    // ✅ Listen to both resize and visualViewport changes
     window.addEventListener("resize", updateViewport);
     window.visualViewport?.addEventListener("resize", updateViewport);
     window.visualViewport?.addEventListener("scroll", updateViewport);
@@ -164,7 +162,6 @@ const ProductCard = ({ product }) => {
           }
         }
 
-        /* ✅ iOS Safari Close Button Fix */
         @supports (-webkit-touch-callout: none) {
           button[data-close-modal] {
             position: fixed !important;
@@ -174,7 +171,6 @@ const ProductCard = ({ product }) => {
             transform: translate3d(0, 0, 999px) !important;
           }
 
-          /* ✅ Account for notch */
           @supports (top: env(safe-area-inset-top)) {
             button[data-close-modal] {
               top: calc(env(safe-area-inset-top) + 16px) !important;
@@ -183,7 +179,6 @@ const ProductCard = ({ product }) => {
           }
         }
 
-        /* ✅ Force button to stay on top */
         button[data-close-modal] {
           transform-style: preserve-3d;
           -webkit-transform-style: preserve-3d;
@@ -463,13 +458,17 @@ const ProductCard = ({ product }) => {
             bottom: 0,
             zIndex: 999999,
             display: "flex",
-            alignItems: isMobile ? "flex-end" : "center",
+            alignItems: isMobile ? "flex-end" : "flex-start", // ✅ UBAH dari "center" ke "flex-start"
             justifyContent: "center",
             background: "rgba(0, 0, 0, 0)",
             backdropFilter: "blur(0px)",
-            overflowY: "hidden",
+            overflowY: isMobile ? "hidden" : "hidden", // ✅ Desktop bisa scroll
             overflowX: "hidden",
-            padding: "0",
+            padding: isMobile ? "0" : "0", // ✅ Reset padding
+            paddingTop: isMobile ? "0" : "90px", // ✅ 80px gap dari navbar
+            paddingBottom: isMobile ? "0" : "40px",
+            paddingLeft: isMobile ? "0" : "20px",
+            paddingRight: isMobile ? "0" : "20px",
             animation: "backdropFadeIn 0.3s ease forwards",
           }}
           onClick={closeQuickView}
@@ -494,18 +493,12 @@ const ProductCard = ({ product }) => {
                 boxShadow: "0 -10px 40px rgba(0, 0, 0, 0.3)",
                 position: "relative",
                 overflow: "hidden",
-                maxHeight: getResponsiveValue({
-                  xs: "92vh",
-                  sm: "90vh",
-                  md: "90vh",
-                  lg: "88vh",
-                  xl: "85vh",
-                }),
+                maxHeight: isMobile ? "92vh" : "calc(100vh - 40px)",
                 display: "flex",
                 flexDirection: "column",
               }}
             >
-              {/* ✅ STICKY HEADER - 60px Padding Top */}
+              {/* STICKY HEADER */}
               <div
                 style={{
                   position: "sticky",
@@ -540,7 +533,7 @@ const ProductCard = ({ product }) => {
                   </div>
                 )}
 
-                {/* ✅ Close Button - Always 16px from Container Top */}
+                {/* Close Button */}
                 <button
                   onClick={closeQuickView}
                   style={{
@@ -580,13 +573,9 @@ const ProductCard = ({ product }) => {
                 className="modal-content modal-safe-area"
                 style={{
                   display: "block",
-                  maxHeight: getResponsiveValue({
-                    xs: "calc(92vh - 140px)", // ✅ Adjust for header padding
-                    sm: "calc(90vh - 140px)",
-                    md: "calc(90vh - 140px)",
-                    lg: "calc(88vh - 60px)",
-                    xl: "85vh",
-                  }),
+                  maxHeight: isMobile
+                    ? "calc(92vh - 140px)"
+                    : "calc(100vh - 100px)",
                   overflowY: "auto",
                   overflowX: "hidden",
                   WebkitOverflowScrolling: "touch",
@@ -595,63 +584,24 @@ const ProductCard = ({ product }) => {
                 {/* IMAGE SECTION */}
                 <div
                   style={{
-                    background:
-                      "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
-                    padding: getResponsiveValue({
-                      xs: "16px 16px 24px",
-                      sm: "18px 18px 26px",
-                      md: "20px 20px 30px",
-                      lg: "40px 40px 50px",
-                      xl: "60px 40px",
-                    }),
+                    background: "white",
+                    padding: "0",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     position: "relative",
-                    minHeight: getResponsiveValue({
-                      xs: "220px",
-                      sm: "240px",
-                      md: "260px",
-                      lg: "400px",
-                      xl: "500px",
-                    }),
+                    minHeight: isMobile ? "220px" : "400px",
                     width: "100%",
                   }}
                 >
                   <div
                     style={{
-                      position: "absolute",
-                      width: "120px",
-                      height: "120px",
-                      background: "rgba(255, 255, 255, 0.4)",
-                      borderRadius: "50%",
-                      top: "-30px",
-                      right: "-30px",
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      width: "80px",
-                      height: "80px",
-                      background: "rgba(255, 255, 255, 0.4)",
-                      borderRadius: "50%",
-                      bottom: "-20px",
-                      left: "-20px",
-                    }}
-                  />
-
-                  <div
-                    style={{
                       position: "relative",
                       width: "100%",
-                      maxWidth: getResponsiveValue({
-                        xs: "85%",
-                        sm: "88%",
-                        md: "90%",
-                        lg: "80%",
-                        xl: "320px",
-                      }),
+                      height: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       zIndex: 1,
                     }}
                   >
@@ -660,38 +610,27 @@ const ProductCard = ({ product }) => {
                       alt={product.title}
                       style={{
                         width: "100%",
-                        height: "auto",
+                        height: isMobile ? "auto" : "400px",
                         maxWidth: "100%",
-                        objectFit: "contain",
-                        borderRadius: "12px",
+                        objectFit: "cover",
+                        borderRadius: "0",
                         filter: "drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15))",
                       }}
                     />
 
+                    {/* Brand Badge */}
                     <div
                       style={{
                         position: "absolute",
-                        top: "0",
-                        left: "0",
+                        top: isMobile ? "16px" : "20px",
+                        left: isMobile ? "16px" : "20px",
                       }}
                     >
                       <span
                         style={{
-                          padding: getResponsiveValue({
-                            xs: "6px 10px",
-                            sm: "7px 12px",
-                            md: "8px 14px",
-                            lg: "9px 16px",
-                            xl: "10px 18px",
-                          }),
+                          padding: isMobile ? "6px 10px" : "10px 18px",
                           borderRadius: "20px",
-                          fontSize: getResponsiveValue({
-                            xs: "9px",
-                            sm: "10px",
-                            md: "11px",
-                            lg: "11px",
-                            xl: "12px",
-                          }),
+                          fontSize: isMobile ? "9px" : "12px",
                           fontWeight: "700",
                           textTransform: "uppercase",
                           background: brandColor,
@@ -710,13 +649,7 @@ const ProductCard = ({ product }) => {
                 {/* CONTENT SECTION */}
                 <div
                   style={{
-                    padding: getResponsiveValue({
-                      xs: "16px 16px 32px",
-                      sm: "18px 18px 36px",
-                      md: "20px 20px 40px",
-                      lg: "30px 30px 50px",
-                      xl: "50px 40px",
-                    }),
+                    padding: isMobile ? "16px 16px 32px" : "30px 40px 40px",
                     background: "white",
                     width: "100%",
                     boxSizing: "border-box",
@@ -724,22 +657,10 @@ const ProductCard = ({ product }) => {
                 >
                   <h2
                     style={{
-                      fontSize: getResponsiveValue({
-                        xs: "18px",
-                        sm: "19px",
-                        md: "20px",
-                        lg: "24px",
-                        xl: "28px",
-                      }),
+                      fontSize: isMobile ? "18px" : "24px",
                       fontWeight: "700",
                       color: "#1e293b",
-                      marginBottom: getResponsiveValue({
-                        xs: "16px",
-                        sm: "18px",
-                        md: "20px",
-                        lg: "20px",
-                        xl: "20px",
-                      }),
+                      marginBottom: isMobile ? "16px" : "20px",
                       lineHeight: "1.3",
                       paddingLeft: "14px",
                       borderLeft: `4px solid ${brandColor}`,
@@ -753,21 +674,9 @@ const ProductCard = ({ product }) => {
                     <div
                       style={{
                         background: "white",
-                        padding: getResponsiveValue({
-                          xs: "14px",
-                          sm: "15px",
-                          md: "16px",
-                          lg: "20px",
-                          xl: "24px",
-                        }),
+                        padding: isMobile ? "14px" : "20px",
                         borderRadius: "16px",
-                        marginBottom: getResponsiveValue({
-                          xs: "16px",
-                          sm: "18px",
-                          md: "20px",
-                          lg: "20px",
-                          xl: "20px",
-                        }),
+                        marginBottom: isMobile ? "16px" : "20px",
                         border: `2px solid ${brandColor}`,
                         position: "relative",
                         overflow: "hidden",
@@ -789,20 +698,8 @@ const ProductCard = ({ product }) => {
                       <h5
                         style={{
                           color: "#1e293b",
-                          marginBottom: getResponsiveValue({
-                            xs: "12px",
-                            sm: "13px",
-                            md: "14px",
-                            lg: "14px",
-                            xl: "14px",
-                          }),
-                          fontSize: getResponsiveValue({
-                            xs: "11px",
-                            sm: "11px",
-                            md: "12px",
-                            lg: "12px",
-                            xl: "12px",
-                          }),
+                          marginBottom: isMobile ? "12px" : "14px",
+                          fontSize: isMobile ? "11px" : "12px",
                           fontWeight: "700",
                           textTransform: "uppercase",
                           letterSpacing: "1px",
@@ -817,13 +714,7 @@ const ProductCard = ({ product }) => {
                           gridTemplateColumns: product.substitute_type
                             ? "1fr 1fr"
                             : "1fr",
-                          gap: getResponsiveValue({
-                            xs: "8px",
-                            sm: "9px",
-                            md: "10px",
-                            lg: "12px",
-                            xl: "14px",
-                          }),
+                          gap: isMobile ? "8px" : "12px",
                           width: "100%",
                         }}
                       >
@@ -831,13 +722,7 @@ const ProductCard = ({ product }) => {
                           style={{
                             display: "flex",
                             flexDirection: "column",
-                            gap: getResponsiveValue({
-                              xs: "6px",
-                              sm: "7px",
-                              md: "8px",
-                              lg: "10px",
-                              xl: "12px",
-                            }),
+                            gap: isMobile ? "6px" : "10px",
                           }}
                         >
                           {product.specs.capacity && (
@@ -845,40 +730,16 @@ const ProductCard = ({ product }) => {
                               style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: getResponsiveValue({
-                                  xs: "8px",
-                                  sm: "9px",
-                                  md: "10px",
-                                  lg: "10px",
-                                  xl: "12px",
-                                }),
-                                padding: getResponsiveValue({
-                                  xs: "8px",
-                                  sm: "9px",
-                                  md: "10px",
-                                  lg: "10px",
-                                  xl: "12px",
-                                }),
+                                gap: isMobile ? "8px" : "12px",
+                                padding: isMobile ? "8px" : "12px",
                                 background: "#f8f9fa",
                                 borderRadius: "10px",
                               }}
                             >
                               <div
                                 style={{
-                                  width: getResponsiveValue({
-                                    xs: "32px",
-                                    sm: "34px",
-                                    md: "36px",
-                                    lg: "36px",
-                                    xl: "40px",
-                                  }),
-                                  height: getResponsiveValue({
-                                    xs: "32px",
-                                    sm: "34px",
-                                    md: "36px",
-                                    lg: "36px",
-                                    xl: "40px",
-                                  }),
+                                  width: isMobile ? "32px" : "40px",
+                                  height: isMobile ? "32px" : "40px",
                                   background: `${brandColor}15`,
                                   borderRadius: "8px",
                                   display: "flex",
@@ -890,13 +751,7 @@ const ProductCard = ({ product }) => {
                                 <i
                                   className="fas fa-battery-full"
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "14px",
-                                      sm: "15px",
-                                      md: "16px",
-                                      lg: "16px",
-                                      xl: "18px",
-                                    }),
+                                    fontSize: isMobile ? "14px" : "18px",
                                     color: brandColor,
                                   }}
                                 ></i>
@@ -904,13 +759,7 @@ const ProductCard = ({ product }) => {
                               <div style={{ minWidth: 0, flex: 1 }}>
                                 <div
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "8px",
-                                      sm: "8px",
-                                      md: "9px",
-                                      lg: "9px",
-                                      xl: "10px",
-                                    }),
+                                    fontSize: isMobile ? "8px" : "10px",
                                     color: "#64748b",
                                     marginBottom: "2px",
                                     textTransform: "uppercase",
@@ -922,13 +771,7 @@ const ProductCard = ({ product }) => {
                                 </div>
                                 <div
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "13px",
-                                      sm: "14px",
-                                      md: "15px",
-                                      lg: "15px",
-                                      xl: "16px",
-                                    }),
+                                    fontSize: isMobile ? "13px" : "16px",
                                     fontWeight: "700",
                                     color: "#1e293b",
                                     whiteSpace: "nowrap",
@@ -947,40 +790,16 @@ const ProductCard = ({ product }) => {
                               style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: getResponsiveValue({
-                                  xs: "8px",
-                                  sm: "9px",
-                                  md: "10px",
-                                  lg: "10px",
-                                  xl: "12px",
-                                }),
-                                padding: getResponsiveValue({
-                                  xs: "8px",
-                                  sm: "9px",
-                                  md: "10px",
-                                  lg: "10px",
-                                  xl: "12px",
-                                }),
+                                gap: isMobile ? "8px" : "12px",
+                                padding: isMobile ? "8px" : "12px",
                                 background: "#f8f9fa",
                                 borderRadius: "10px",
                               }}
                             >
                               <div
                                 style={{
-                                  width: getResponsiveValue({
-                                    xs: "32px",
-                                    sm: "34px",
-                                    md: "36px",
-                                    lg: "36px",
-                                    xl: "40px",
-                                  }),
-                                  height: getResponsiveValue({
-                                    xs: "32px",
-                                    sm: "34px",
-                                    md: "36px",
-                                    lg: "36px",
-                                    xl: "40px",
-                                  }),
+                                  width: isMobile ? "32px" : "40px",
+                                  height: isMobile ? "32px" : "40px",
                                   background: `${brandColor}15`,
                                   borderRadius: "8px",
                                   display: "flex",
@@ -992,13 +811,7 @@ const ProductCard = ({ product }) => {
                                 <i
                                   className="fas fa-bolt"
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "14px",
-                                      sm: "15px",
-                                      md: "16px",
-                                      lg: "16px",
-                                      xl: "18px",
-                                    }),
+                                    fontSize: isMobile ? "14px" : "18px",
                                     color: brandColor,
                                   }}
                                 ></i>
@@ -1006,13 +819,7 @@ const ProductCard = ({ product }) => {
                               <div style={{ minWidth: 0, flex: 1 }}>
                                 <div
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "8px",
-                                      sm: "8px",
-                                      md: "9px",
-                                      lg: "9px",
-                                      xl: "10px",
-                                    }),
+                                    fontSize: isMobile ? "8px" : "10px",
                                     color: "#64748b",
                                     marginBottom: "2px",
                                     textTransform: "uppercase",
@@ -1024,13 +831,7 @@ const ProductCard = ({ product }) => {
                                 </div>
                                 <div
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "13px",
-                                      sm: "14px",
-                                      md: "15px",
-                                      lg: "15px",
-                                      xl: "16px",
-                                    }),
+                                    fontSize: isMobile ? "13px" : "16px",
                                     fontWeight: "700",
                                     color: "#1e293b",
                                     whiteSpace: "nowrap",
@@ -1047,40 +848,16 @@ const ProductCard = ({ product }) => {
                               style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: getResponsiveValue({
-                                  xs: "8px",
-                                  sm: "9px",
-                                  md: "10px",
-                                  lg: "10px",
-                                  xl: "12px",
-                                }),
-                                padding: getResponsiveValue({
-                                  xs: "8px",
-                                  sm: "9px",
-                                  md: "10px",
-                                  lg: "10px",
-                                  xl: "12px",
-                                }),
+                                gap: isMobile ? "8px" : "12px",
+                                padding: isMobile ? "8px" : "12px",
                                 background: "#f8f9fa",
                                 borderRadius: "10px",
                               }}
                             >
                               <div
                                 style={{
-                                  width: getResponsiveValue({
-                                    xs: "32px",
-                                    sm: "34px",
-                                    md: "36px",
-                                    lg: "36px",
-                                    xl: "40px",
-                                  }),
-                                  height: getResponsiveValue({
-                                    xs: "32px",
-                                    sm: "34px",
-                                    md: "36px",
-                                    lg: "36px",
-                                    xl: "40px",
-                                  }),
+                                  width: isMobile ? "32px" : "40px",
+                                  height: isMobile ? "32px" : "40px",
                                   background: `${brandColor}15`,
                                   borderRadius: "8px",
                                   display: "flex",
@@ -1092,13 +869,7 @@ const ProductCard = ({ product }) => {
                                 <i
                                   className="fas fa-shield-alt"
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "14px",
-                                      sm: "15px",
-                                      md: "16px",
-                                      lg: "16px",
-                                      xl: "18px",
-                                    }),
+                                    fontSize: isMobile ? "14px" : "18px",
                                     color: brandColor,
                                   }}
                                 ></i>
@@ -1106,13 +877,7 @@ const ProductCard = ({ product }) => {
                               <div style={{ minWidth: 0, flex: 1 }}>
                                 <div
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "8px",
-                                      sm: "8px",
-                                      md: "9px",
-                                      lg: "9px",
-                                      xl: "10px",
-                                    }),
+                                    fontSize: isMobile ? "8px" : "10px",
                                     color: "#64748b",
                                     marginBottom: "2px",
                                     textTransform: "uppercase",
@@ -1124,13 +889,7 @@ const ProductCard = ({ product }) => {
                                 </div>
                                 <div
                                   style={{
-                                    fontSize: getResponsiveValue({
-                                      xs: "13px",
-                                      sm: "14px",
-                                      md: "15px",
-                                      lg: "15px",
-                                      xl: "16px",
-                                    }),
+                                    fontSize: isMobile ? "13px" : "16px",
                                     fontWeight: "700",
                                     color: "#1e293b",
                                     whiteSpace: "nowrap",
@@ -1149,13 +908,7 @@ const ProductCard = ({ product }) => {
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              padding: getResponsiveValue({
-                                xs: "10px",
-                                sm: "11px",
-                                md: "12px",
-                                lg: "14px",
-                                xl: "16px",
-                              }),
+                              padding: isMobile ? "10px" : "16px",
                               background: `${brandColor}08`,
                               borderRadius: "12px",
                               border: `2px dashed ${brandColor}40`,
@@ -1165,33 +918,15 @@ const ProductCard = ({ product }) => {
                               <i
                                 className="fas fa-code-branch"
                                 style={{
-                                  fontSize: getResponsiveValue({
-                                    xs: "20px",
-                                    sm: "22px",
-                                    md: "24px",
-                                    lg: "26px",
-                                    xl: "28px",
-                                  }),
+                                  fontSize: isMobile ? "20px" : "28px",
                                   color: brandColor,
-                                  marginBottom: getResponsiveValue({
-                                    xs: "6px",
-                                    sm: "7px",
-                                    md: "8px",
-                                    lg: "8px",
-                                    xl: "8px",
-                                  }),
+                                  marginBottom: isMobile ? "6px" : "8px",
                                   display: "block",
                                 }}
                               ></i>
                               <div
                                 style={{
-                                  fontSize: getResponsiveValue({
-                                    xs: "8px",
-                                    sm: "8px",
-                                    md: "9px",
-                                    lg: "9px",
-                                    xl: "10px",
-                                  }),
+                                  fontSize: isMobile ? "8px" : "10px",
                                   color: "#64748b",
                                   marginBottom: "6px",
                                   textTransform: "uppercase",
@@ -1203,13 +938,7 @@ const ProductCard = ({ product }) => {
                               </div>
                               <div
                                 style={{
-                                  fontSize: getResponsiveValue({
-                                    xs: "14px",
-                                    sm: "15px",
-                                    md: "16px",
-                                    lg: "17px",
-                                    xl: "18px",
-                                  }),
+                                  fontSize: isMobile ? "14px" : "18px",
                                   fontWeight: "700",
                                   color: "#1e293b",
                                   lineHeight: "1.3",
@@ -1230,20 +959,8 @@ const ProductCard = ({ product }) => {
                       style={{
                         color: "#64748b",
                         lineHeight: 1.7,
-                        marginBottom: getResponsiveValue({
-                          xs: "16px",
-                          sm: "17px",
-                          md: "18px",
-                          lg: "18px",
-                          xl: "18px",
-                        }),
-                        fontSize: getResponsiveValue({
-                          xs: "12px",
-                          sm: "12px",
-                          md: "13px",
-                          lg: "13px",
-                          xl: "14px",
-                        }),
+                        marginBottom: isMobile ? "16px" : "18px",
+                        fontSize: isMobile ? "12px" : "14px",
                         wordWrap: "break-word",
                       }}
                     >
@@ -1255,44 +972,20 @@ const ProductCard = ({ product }) => {
                     onClick={handleWhatsAppContact}
                     style={{
                       width: "100%",
-                      padding: getResponsiveValue({
-                        xs: "12px 18px",
-                        sm: "13px 19px",
-                        md: "14px 20px",
-                        lg: "15px 22px",
-                        xl: "16px 24px",
-                      }),
+                      padding: isMobile ? "12px 18px" : "16px 24px",
                       background:
                         "linear-gradient(135deg, #25D366 0%, #1fb855 100%)",
                       color: "white",
                       border: "none",
                       borderRadius: "12px",
-                      fontSize: getResponsiveValue({
-                        xs: "13px",
-                        sm: "13px",
-                        md: "14px",
-                        lg: "14px",
-                        xl: "15px",
-                      }),
+                      fontSize: isMobile ? "13px" : "15px",
                       fontWeight: "700",
                       cursor: "pointer",
-                      marginBottom: getResponsiveValue({
-                        xs: "14px",
-                        sm: "15px",
-                        md: "16px",
-                        lg: "16px",
-                        xl: "16px",
-                      }),
+                      marginBottom: isMobile ? "14px" : "16px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      gap: getResponsiveValue({
-                        xs: "8px",
-                        sm: "9px",
-                        md: "10px",
-                        lg: "10px",
-                        xl: "12px",
-                      }),
+                      gap: isMobile ? "8px" : "12px",
                       transition: "all 0.3s ease",
                       boxShadow: "0 6px 20px rgba(37, 211, 102, 0.35)",
                     }}
@@ -1300,13 +993,7 @@ const ProductCard = ({ product }) => {
                     <i
                       className="fab fa-whatsapp"
                       style={{
-                        fontSize: getResponsiveValue({
-                          xs: "16px",
-                          sm: "17px",
-                          md: "18px",
-                          lg: "18px",
-                          xl: "20px",
-                        }),
+                        fontSize: isMobile ? "16px" : "20px",
                       }}
                     ></i>
                     Hubungi Kami via WhatsApp
@@ -1315,13 +1002,7 @@ const ProductCard = ({ product }) => {
                   <div
                     style={{
                       background: "#f8f9fa",
-                      padding: getResponsiveValue({
-                        xs: "12px",
-                        sm: "13px",
-                        md: "14px",
-                        lg: "14px",
-                        xl: "16px",
-                      }),
+                      padding: isMobile ? "12px" : "16px",
                       borderRadius: "12px",
                       border: "1px solid #e9ecef",
                       width: "100%",
@@ -1341,38 +1022,14 @@ const ProductCard = ({ product }) => {
                         style={{
                           display: "flex",
                           alignItems: "center",
-                          gap: getResponsiveValue({
-                            xs: "8px",
-                            sm: "9px",
-                            md: "10px",
-                            lg: "10px",
-                            xl: "12px",
-                          }),
-                          padding: getResponsiveValue({
-                            xs: "5px 0",
-                            sm: "5px 0",
-                            md: "6px 0",
-                            lg: "6px 0",
-                            xl: "6px 0",
-                          }),
+                          gap: isMobile ? "8px" : "12px",
+                          padding: isMobile ? "5px 0" : "6px 0",
                         }}
                       >
                         <div
                           style={{
-                            width: getResponsiveValue({
-                              xs: "28px",
-                              sm: "30px",
-                              md: "32px",
-                              lg: "32px",
-                              xl: "36px",
-                            }),
-                            height: getResponsiveValue({
-                              xs: "28px",
-                              sm: "30px",
-                              md: "32px",
-                              lg: "32px",
-                              xl: "36px",
-                            }),
+                            width: isMobile ? "28px" : "36px",
+                            height: isMobile ? "28px" : "36px",
                             background: `${brandColor}15`,
                             borderRadius: "8px",
                             display: "flex",
@@ -1384,26 +1041,14 @@ const ProductCard = ({ product }) => {
                           <i
                             className={`fas ${item.icon}`}
                             style={{
-                              fontSize: getResponsiveValue({
-                                xs: "12px",
-                                sm: "13px",
-                                md: "14px",
-                                lg: "14px",
-                                xl: "16px",
-                              }),
+                              fontSize: isMobile ? "12px" : "16px",
                               color: brandColor,
                             }}
                           ></i>
                         </div>
                         <span
                           style={{
-                            fontSize: getResponsiveValue({
-                              xs: "11px",
-                              sm: "11px",
-                              md: "12px",
-                              lg: "12px",
-                              xl: "13px",
-                            }),
+                            fontSize: isMobile ? "11px" : "13px",
                             color: "#1e293b",
                             fontWeight: "600",
                             flex: 1,
