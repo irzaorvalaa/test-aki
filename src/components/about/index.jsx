@@ -9,7 +9,10 @@ const About = () => {
     <>
       <HeaderFive />
       <main>
-        <Breadcrumb top_title="About Style 01" title="About" />
+        <Breadcrumb
+          top_title="Tentang Kami"
+          title="Tentang Kami - Sentosa Jaya Mandiri Cirebon"
+        />
         <AboutUs />
         <BrandArea />
       </main>

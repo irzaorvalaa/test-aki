@@ -9,7 +9,7 @@ import breadcrumb_shape_4 from "@assets/img/shape/shape-c-2.png";
 
 const BreadcrumbProduct = ({
   top_title = "List Produk Kami",
-  title = "Produk AKI SJM Cirebon",
+  title = "Produk AKI - Sentosa Jaya Mandiri Cirebon",
 }) => {
   // ✅ DETECT SCREEN SIZE
   const [isMobile, setIsMobile] = useState(false);

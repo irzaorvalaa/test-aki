@@ -10,7 +10,10 @@ const Contact = () => {
     <>
       <HeaderFive />
       <main>
-        <Breadcrumb top_title="Contact us" title="Contact" />
+        <Breadcrumb
+          top_title="Kontak Kami"
+          title="Kontak Kami - Sentosa Jaya Mandiri Cirebon"
+        />
         <ContactStandardArea />
         <ContactMap />
         <ContactStandardFormArea />

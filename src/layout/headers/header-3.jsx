@@ -1,3 +1,4 @@
+// src/components/layout/headers/header-3.jsx (CLEAN DYNAMIC UNDERLINE)
 import useSticky from "@/src/hooks/use-sticky";
 import Link from "next/link";
 import React from "react";
@@ -24,7 +25,6 @@ const HeaderThree = ({ style_7 }) => {
             <div className="position-relative">
               <div className="row align-items-center">
                 <div className="col-xl-2 col-lg-2 col-6">
-                  {/* ✅ LOGO DENGAN UKURAN RESPONSIVE */}
                   <div className="logo">
                     <Link href="/">
                       <img
@@ -32,9 +32,9 @@ const HeaderThree = ({ style_7 }) => {
                         alt="Sentosa Jaya Mandiri - Toko Aki Cirebon"
                         style={{
                           width: "auto",
-                          height: "70px", // ✅ HEIGHT TETAP 50PX
-                          maxWidth: "180px", // ✅ MAX WIDTH
-                          objectFit: "contain", // ✅ MAINTAIN ASPECT RATIO
+                          height: "70px",
+                          maxWidth: "180px",
+                          objectFit: "contain",
                           display: "block",
                         }}
                       />
@@ -57,7 +57,6 @@ const HeaderThree = ({ style_7 }) => {
                   </div>
                 </div>
 
-                {/* Mobile Menu Button */}
                 <div className="col-6 d-lg-none">
                   <div
                     style={{
@@ -76,8 +75,8 @@ const HeaderThree = ({ style_7 }) => {
         </div>
       </header>
 
-      {/* ✅ CSS RESPONSIVE LOGO */}
-      <style jsx>{`
+      <style jsx global>{`
+        /* Logo responsive */
         .logo img {
           width: auto;
           height: 50px;
@@ -87,13 +86,80 @@ const HeaderThree = ({ style_7 }) => {
           transition: all 0.3s ease;
         }
 
-        /* Sticky header - logo lebih kecil */
         .sticky-bar .logo img {
           height: 45px;
           max-width: 160px;
         }
 
-        /* Mobile - logo lebih kecil */
+        /* ✅ REMOVE OLD UNDERLINES */
+        .main-menu nav > ul > li > a,
+        .main-menu nav > ul > li > a::before,
+        .main-menu nav > ul > li > a::after {
+          text-decoration: none !important;
+          border: none !important;
+          background-image: none !important;
+          outline: none !important;
+          box-shadow: none !important;
+        }
+
+        /* ✅ HIDE OLD PSEUDO ELEMENTS */
+        .main-menu nav > ul > li > a::before {
+          display: none !important;
+          content: none !important;
+        }
+
+        /* ✅ NAVBAR STRUCTURE */
+        .main-menu nav > ul {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+        }
+
+        .main-menu nav > ul > li {
+          position: relative !important;
+          display: inline-block;
+          margin: 0 10px;
+        }
+
+        .main-menu nav > ul > li > a {
+          position: relative !important;
+          display: inline-block;
+          padding: 28px 20px 28px 20px !important;
+          font-weight: 600;
+          font-size: 16px;
+          transition: color 0.3s ease;
+        }
+
+        /* ✅ NEW CLEAN UNDERLINE - BELOW TEXT */
+        .main-menu nav > ul > li > a::after {
+          content: "" !important;
+          display: block !important;
+          position: absolute !important;
+          left: 20px !important;
+          right: 20px !important;
+          bottom: 18px !important;
+          height: 2px !important;
+          background: currentColor !important;
+          transform: scaleX(0) !important;
+          transform-origin: center !important;
+          transition: transform 0.3s ease !important;
+          opacity: 1 !important;
+        }
+
+        /* ✅ HOVER & ACTIVE STATE */
+        .main-menu nav > ul > li > a:hover::after,
+        .main-menu nav > ul > li.active > a::after {
+          transform: scaleX(1) !important;
+        }
+
+        /* ✅ ACTIVE PAGE - ALWAYS SHOW UNDERLINE */
+        .main-menu nav > ul > li.active > a::after {
+          transform: scaleX(1) !important;
+        }
+
+        /* Mobile responsive */
         @media (max-width: 768px) {
           .logo img {
             height: 40px;
@@ -106,7 +172,6 @@ const HeaderThree = ({ style_7 }) => {
           }
         }
 
-        /* Extra small devices */
         @media (max-width: 480px) {
           .logo img {
             height: 35px;

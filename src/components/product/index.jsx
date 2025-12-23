@@ -9,7 +9,6 @@ import ProductCard from "./product-card";
 import ProductFilter from "./product-filter";
 import Pagination from "./pagination";
 import product_data from "@/src/data/product-data";
-import Breadcrumb from "../common/breadcrumb/breadcrumb";
 
 const ITEMS_PER_PAGE = 12;
 

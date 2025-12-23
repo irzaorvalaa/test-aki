@@ -80,7 +80,7 @@ const Gallery = () => {
       <SEO pageTitle="Galeri Kami - Photo Gallery" />
       <HeaderFive />
       <Breadcrumb
-        title="Galeri"
+        title="Galeri - Sentosa Jaya Mandiri Cirebon"
         subtitle="Explore our services and discover what we can do for you"
       />
 

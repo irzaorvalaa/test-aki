@@ -9,7 +9,10 @@ const ServiceTwo = () => {
     <>
       <HeaderFive />
       <main>
-        <Breadcrumb top_title="Service Style 02" title="Service 02" />
+        <Breadcrumb
+          top_title="Layanan Kami"
+          title="Layanan Kami - Sentosa Jaya Mandiri Cirebon"
+        />
         <OurService />
       </main>
       <Footer home_2={true} />
