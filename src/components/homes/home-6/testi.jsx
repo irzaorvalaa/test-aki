@@ -1,5 +1,5 @@
-// src/components/homes/home-6/testi.jsx (FIXED TOUCH TARGETS)
-import React from "react";
+// src/components/homes/home-6/testi.jsx (OPTIMIZED)
+import React, { useState, useEffect } from "react";
 
 const testimonials = [
   {
@@ -44,453 +44,474 @@ const testimonials = [
   },
 ];
 
-class Testi extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentIndex: 0,
+const Testi = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") prevSlide();
+      if (e.key === "ArrowRight") nextSlide();
     };
-  }
 
-  nextSlide = () => {
-    this.setState((prevState) => ({
-      currentIndex: (prevState.currentIndex + 1) % testimonials.length,
-    }));
-  };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
-  prevSlide = () => {
-    this.setState((prevState) => ({
-      currentIndex:
-        (prevState.currentIndex - 1 + testimonials.length) %
-        testimonials.length,
-    }));
-  };
+  // Auto-play (optional)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
 
-  goToSlide = (index) => {
-    this.setState({ currentIndex: index });
-  };
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
-  render() {
-    const { currentIndex } = this.state;
-    const currentTesti = testimonials[currentIndex];
+  const currentTesti = testimonials[currentIndex];
 
-    return (
-      <section
-        className="testimonial-area pt-90 pb-90"
-        style={{
-          background: "#f8f9fa",
-          position: "relative",
-          overflow: "hidden",
-        }}
-        suppressHydrationWarning
-      >
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          {/* Header */}
-          <div className="row justify-content-center mb-50">
-            <div className="col-xl-7 col-lg-9">
-              <div className="text-center">
-                <span
-                  style={{
-                    display: "inline-block",
-                    padding: "8px 18px",
-                    background: "#e9ecef",
-                    color: "#495057",
-                    borderRadius: "50px",
-                    fontSize: "12px",
-                    fontWeight: "600",
-                    marginBottom: "15px",
-                    letterSpacing: "0.5px",
-                    border: "1px solid #dee2e6",
-                  }}
-                >
-                  ⭐ TESTIMONI PELANGGAN
-                </span>
-                <h2
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: "700",
-                    color: "#212529",
-                    marginBottom: "12px",
-                    lineHeight: "1.3",
-                  }}
-                >
-                  Apa Kata Pelanggan Kami
-                </h2>
-                <p
-                  style={{
-                    fontSize: "15px",
-                    color: "#6c757d",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  Kepuasan pelanggan adalah prioritas utama kami
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial Card */}
-          <div className="row justify-content-center">
-            <div className="col-xl-9 col-lg-10">
-              <div
+  return (
+    <section
+      className="testimonial-area pt-90 pb-90"
+      style={{
+        background: "#f8f9fa",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        {/* Header */}
+        <div className="row justify-content-center mb-50">
+          <div className="col-xl-7 col-lg-9">
+            <div className="text-center">
+              <span
                 style={{
-                  background: "white",
-                  borderRadius: "20px",
-                  padding: "40px 35px",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                  position: "relative",
-                  minHeight: "320px",
-                  border: "1px solid #e9ecef",
+                  display: "inline-block",
+                  padding: "8px 18px",
+                  background: "#e9ecef",
+                  color: "#495057",
+                  borderRadius: "50px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                  marginBottom: "15px",
+                  letterSpacing: "0.5px",
+                  border: "1px solid #dee2e6",
                 }}
               >
-                <div className="row align-items-center">
-                  {/* Avatar Section */}
-                  <div className="col-lg-4 mb-4 mb-lg-0 text-center">
+                TESTIMONI PELANGGAN
+              </span>
+              <h2
+                style={{
+                  fontSize: "32px",
+                  fontWeight: "700",
+                  color: "#212529",
+                  marginBottom: "12px",
+                  lineHeight: "1.3",
+                }}
+              >
+                Apa Kata Pelanggan Kami
+              </h2>
+              <p
+                style={{
+                  fontSize: "15px",
+                  color: "#6c757d",
+                  lineHeight: "1.6",
+                }}
+              >
+                Kepuasan pelanggan adalah prioritas utama kami
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonial Card */}
+        <div className="row justify-content-center">
+          <div className="col-xl-9 col-lg-10">
+            <div
+              style={{
+                background: "white",
+                borderRadius: "20px",
+                padding: "40px 35px",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                position: "relative",
+                minHeight: "320px",
+                border: "1px solid #e9ecef",
+              }}
+            >
+              <div className="row align-items-center">
+                {/* Avatar Section */}
+                <div className="col-lg-4 mb-4 mb-lg-0 text-center">
+                  <div
+                    style={{ position: "relative", display: "inline-block" }}
+                  >
                     <div
-                      style={{ position: "relative", display: "inline-block" }}
+                      style={{
+                        width: "120px",
+                        height: "120px",
+                        borderRadius: "50%",
+                        background: "#495057",
+                        padding: "4px",
+                        margin: "0 auto",
+                      }}
                     >
                       <div
                         style={{
-                          width: "120px",
-                          height: "120px",
+                          width: "100%",
+                          height: "100%",
                           borderRadius: "50%",
-                          background: "#495057",
-                          padding: "4px",
-                          margin: "0 auto",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            borderRadius: "50%",
-                            background: "#e9ecef",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontSize: "40px",
-                            fontWeight: "700",
-                            color: "#495057",
-                          }}
-                        >
-                          {currentTesti.name.charAt(0)}
-                        </div>
-                      </div>
-
-                      {/* Verified Badge */}
-                      <div
-                        style={{
-                          position: "absolute",
-                          bottom: "5px",
-                          right: "5px",
-                          width: "35px",
-                          height: "35px",
-                          background: "#28a745",
-                          borderRadius: "50%",
+                          background: "#e9ecef",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          boxShadow: "0 2px 8px rgba(40, 167, 69, 0.3)",
-                          border: "3px solid white",
+                          fontSize: "40px",
+                          fontWeight: "700",
+                          color: "#495057",
                         }}
                       >
-                        <i
-                          className="fas fa-check"
-                          style={{ color: "white", fontSize: "14px" }}
-                        ></i>
+                        {currentTesti.name.charAt(0)}
                       </div>
                     </div>
 
-                    <div style={{ marginTop: "15px" }}>
-                      <h4
-                        style={{
-                          fontSize: "18px",
-                          fontWeight: "700",
-                          color: "#212529",
-                          marginBottom: "4px",
-                        }}
-                      >
-                        {currentTesti.name}
-                      </h4>
-                      <p
-                        style={{
-                          fontSize: "13px",
-                          color: "#6c757d",
-                          marginBottom: "4px",
-                        }}
-                      >
-                        {currentTesti.position}
-                      </p>
-                      <p
-                        style={{
-                          fontSize: "12px",
-                          color: "#adb5bd",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "4px",
-                        }}
-                      >
-                        <i className="fas fa-map-marker-alt"></i>
-                        {currentTesti.location}
-                      </p>
+                    {/* Verified Badge */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: "5px",
+                        right: "5px",
+                        width: "35px",
+                        height: "35px",
+                        background: "#28a745",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 2px 8px rgba(40, 167, 69, 0.3)",
+                        border: "3px solid white",
+                      }}
+                    >
+                      <i
+                        className="fas fa-check"
+                        style={{ color: "white", fontSize: "14px" }}
+                      ></i>
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="col-lg-8">
-                    <div
+                  <div style={{ marginTop: "15px" }}>
+                    <h4
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "4px",
-                        marginBottom: "15px",
+                        fontSize: "18px",
+                        fontWeight: "700",
+                        color: "#212529",
+                        marginBottom: "4px",
                       }}
                     >
-                      {[...Array(5)].map((_, i) => (
-                        <i
-                          key={i}
-                          className="fas fa-star"
-                          style={{
-                            fontSize: "16px",
-                            color:
-                              i < currentTesti.rating ? "#ffc107" : "#e9ecef",
-                          }}
-                        ></i>
-                      ))}
-                      <span
-                        style={{
-                          marginLeft: "8px",
-                          fontSize: "12px",
-                          color: "#6c757d",
-                        }}
-                      >
-                        {currentTesti.date}
-                      </span>
-                    </div>
-
+                      {currentTesti.name}
+                    </h4>
                     <p
                       style={{
-                        fontSize: "15px",
-                        lineHeight: "1.7",
-                        color: "#495057",
-                        marginBottom: "18px",
+                        fontSize: "13px",
+                        color: "#6c757d",
+                        marginBottom: "4px",
                       }}
                     >
-                      "{currentTesti.text}"
+                      {currentTesti.position}
                     </p>
-
-                    <div
+                    <p
                       style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        background: "#495057",
-                        color: "white",
-                        padding: "8px 16px",
-                        borderRadius: "50px",
                         fontSize: "12px",
-                        fontWeight: "600",
+                        color: "#adb5bd",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "4px",
                       }}
                     >
-                      <i className="fas fa-shopping-cart"></i>
-                      <span>{currentTesti.product}</span>
-                    </div>
+                      <i className="fas fa-map-marker-alt"></i>
+                      {currentTesti.location}
+                    </p>
                   </div>
                 </div>
 
-                {/* ✅ FIXED: Navigation Arrows - 48x48px minimum */}
-                <button
-                  onClick={this.prevSlide}
-                  style={{
-                    position: "absolute",
-                    left: "15px",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    width: "48px", // ✅ Changed from 40px to 48px
-                    height: "48px", // ✅ Changed from 40px to 48px
-                    borderRadius: "50%",
-                    border: "2px solid #dee2e6",
-                    background: "white",
-                    color: "#495057",
-                    fontSize: "18px", // ✅ Slightly bigger icon
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#495057";
-                    e.currentTarget.style.color = "white";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "white";
-                    e.currentTarget.style.color = "#495057";
-                  }}
-                  aria-label="Testimoni Sebelumnya"
-                >
-                  <i className="fas fa-chevron-left"></i>
-                </button>
+                {/* Content */}
+                <div className="col-lg-8">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      marginBottom: "15px",
+                    }}
+                  >
+                    {[...Array(5)].map((_, i) => (
+                      <i
+                        key={i}
+                        className="fas fa-star"
+                        style={{
+                          fontSize: "16px",
+                          color:
+                            i < currentTesti.rating ? "#ffc107" : "#e9ecef",
+                        }}
+                      ></i>
+                    ))}
+                    <span
+                      style={{
+                        marginLeft: "8px",
+                        fontSize: "12px",
+                        color: "#6c757d",
+                      }}
+                    >
+                      {currentTesti.date}
+                    </span>
+                  </div>
 
-                <button
-                  onClick={this.nextSlide}
-                  style={{
-                    position: "absolute",
-                    right: "15px",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    width: "48px", // ✅ Changed from 40px to 48px
-                    height: "48px", // ✅ Changed from 40px to 48px
-                    borderRadius: "50%",
-                    border: "2px solid #dee2e6",
-                    background: "white",
-                    color: "#495057",
-                    fontSize: "18px", // ✅ Slightly bigger icon
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#495057";
-                    e.currentTarget.style.color = "white";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "white";
-                    e.currentTarget.style.color = "#495057";
-                  }}
-                  aria-label="Testimoni Selanjutnya"
-                >
-                  <i className="fas fa-chevron-right"></i>
-                </button>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#495057",
+                      marginBottom: "18px",
+                    }}
+                  >
+                    "{currentTesti.text}"
+                  </p>
+
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      background: "#495057",
+                      color: "white",
+                      padding: "8px 16px",
+                      borderRadius: "50px",
+                      fontSize: "12px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    <i className="fas fa-shopping-cart"></i>
+                    <span>{currentTesti.product}</span>
+                  </div>
+                </div>
               </div>
 
-              {/* ✅ FIXED: Dots - minimum 48x48px touch target */}
-              <div
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
                 style={{
+                  position: "absolute",
+                  left: "15px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "48px",
+                  height: "48px",
+                  borderRadius: "50%",
+                  border: "2px solid #dee2e6",
+                  background: "white",
+                  color: "#495057",
+                  fontSize: "18px",
+                  cursor: "pointer",
                   display: "flex",
+                  alignItems: "center",
                   justifyContent: "center",
-                  gap: "12px", // ✅ Increased gap for easier tap
-                  marginTop: "30px",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                  transition: "all 0.3s ease",
                 }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#495057";
+                  e.currentTarget.style.color = "white";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "white";
+                  e.currentTarget.style.color = "#495057";
+                }}
+                aria-label="Testimoni Sebelumnya"
               >
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => this.goToSlide(index)}
+                <i className="fas fa-chevron-left"></i>
+              </button>
+
+              <button
+                onClick={nextSlide}
+                style={{
+                  position: "absolute",
+                  right: "15px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "48px",
+                  height: "48px",
+                  borderRadius: "50%",
+                  border: "2px solid #dee2e6",
+                  background: "white",
+                  color: "#495057",
+                  fontSize: "18px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#495057";
+                  e.currentTarget.style.color = "white";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "white";
+                  e.currentTarget.style.color = "#495057";
+                }}
+                aria-label="Testimoni Selanjutnya"
+              >
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </div>
+
+            {/* Dots Navigation - FIXED */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "12px",
+                marginTop: "30px",
+              }}
+            >
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    borderRadius: "50%",
+                    border: "none",
+                    background: "transparent",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: 0,
+                    transition: "all 0.3s ease",
+                  }}
+                  aria-label={`Testimoni ${index + 1}`}
+                  aria-current={currentIndex === index ? "true" : "false"}
+                >
+                  <span
                     style={{
-                      width: currentIndex === index ? "48px" : "48px", // ✅ Fixed width 48px
-                      height: "10px", // ✅ Visual height stays 10px
+                      width: currentIndex === index ? "40px" : "12px",
+                      height: "10px",
                       borderRadius: "5px",
-                      border: "none",
                       background:
                         currentIndex === index ? "#495057" : "#dee2e6",
-                      cursor: "pointer",
+                      display: "block",
                       transition: "all 0.3s ease",
-                      padding: "19px 0", // ✅ Add vertical padding to make touch area 48px
-                      position: "relative",
                     }}
-                    aria-label={`Testimoni ${index + 1}`}
                   />
-                ))}
-              </div>
+                </button>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Stats */}
-          <div className="row justify-content-center mt-50">
-            <div className="col-lg-9">
-              <div
-                style={{
-                  background: "white",
-                  borderRadius: "16px",
-                  padding: "30px",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
-                  border: "1px solid #e9ecef",
-                }}
-              >
-                <div className="row text-center">
-                  <div className="col-md-4 mb-3 mb-md-0">
-                    <div>
-                      <h3
-                        style={{
-                          fontSize: "36px",
-                          fontWeight: "700",
-                          marginBottom: "8px",
-                          color: "#212529",
-                        }}
-                      >
-                        4.9/5
-                      </h3>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          color: "#6c757d",
-                          fontWeight: "500",
-                        }}
-                      >
-                        Rating Pelanggan
-                      </p>
-                    </div>
+        {/* Stats */}
+        <div className="row justify-content-center mt-50">
+          <div className="col-lg-9">
+            <div
+              style={{
+                background: "white",
+                borderRadius: "16px",
+                padding: "30px",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                border: "1px solid #e9ecef",
+              }}
+            >
+              <div className="row text-center">
+                <div className="col-md-4 mb-3 mb-md-0">
+                  <div>
+                    <h3
+                      style={{
+                        fontSize: "36px",
+                        fontWeight: "700",
+                        marginBottom: "8px",
+                        color: "#212529",
+                      }}
+                    >
+                      4.9/5
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        color: "#6c757d",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Rating Pelanggan
+                    </p>
                   </div>
-                  <div className="col-md-4 mb-3 mb-md-0">
-                    <div>
-                      <h3
-                        style={{
-                          fontSize: "36px",
-                          fontWeight: "700",
-                          marginBottom: "8px",
-                          color: "#212529",
-                        }}
-                      >
-                        500+
-                      </h3>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          color: "#6c757d",
-                          fontWeight: "500",
-                        }}
-                      >
-                        Pelanggan Puas
-                      </p>
-                    </div>
+                </div>
+                <div className="col-md-4 mb-3 mb-md-0">
+                  <div>
+                    <h3
+                      style={{
+                        fontSize: "36px",
+                        fontWeight: "700",
+                        marginBottom: "8px",
+                        color: "#212529",
+                      }}
+                    >
+                      500+
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        color: "#6c757d",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Pelanggan Puas
+                    </p>
                   </div>
-                  <div className="col-md-4">
-                    <div>
-                      <h3
-                        style={{
-                          fontSize: "36px",
-                          fontWeight: "700",
-                          marginBottom: "8px",
-                          color: "#212529",
-                        }}
-                      >
-                        10+
-                      </h3>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          color: "#6c757d",
-                          fontWeight: "500",
-                        }}
-                      >
-                        Tahun Pengalaman
-                      </p>
-                    </div>
+                </div>
+                <div className="col-md-4">
+                  <div>
+                    <h3
+                      style={{
+                        fontSize: "36px",
+                        fontWeight: "700",
+                        marginBottom: "8px",
+                        color: "#212529",
+                      }}
+                    >
+                      10+
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        color: "#6c757d",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Tahun Pengalaman
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </section>
+  );
+};
 
 export default Testi;

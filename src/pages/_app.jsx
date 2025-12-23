@@ -1,10 +1,10 @@
+// _app.jsx
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "@/src/styles/index.css";
 import store from "../redux/strore";
 import { Provider } from "react-redux";
 import React, { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
 import { poppins, rubik } from "../styles/fonts";
 import "@/public/assets/css/fontawesome-fix.css";
 
@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }) {
       `}</style>
 
       <Component {...pageProps} />
-      <ToastContainer />
+      {/* ToastContainer dipindah ke Wrapper */}
     </Provider>
   );
 }

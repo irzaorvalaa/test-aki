@@ -3,7 +3,7 @@ const product_data = [
   {
     id: 1,
     title: "Amaron GO DIN42",
-    img: "https://placehold.co/400x400/10b981/white?text=Amaron+GO+DIN42&font=raleway",
+    img: "/assets/img/bg/main-bg.jpg",
     price: 850000,
     old_price: 950000,
     category: "amaron-go",

@@ -28,7 +28,7 @@ export default function Document() {
             /_next/image?url=/assets/img/bg/homepage-sjm2rev.png&w=1920&q=75 1920w
           "
           imageSizes="100vw"
-          fetchpriority="high"
+          fetchPriority="high"
         />
 
         {/* Preconnect */}
