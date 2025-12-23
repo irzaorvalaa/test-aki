@@ -28,7 +28,7 @@ const HeaderThree = ({ style_7 }) => {
                   <div className="logo">
                     <Link href="/">
                       <img
-                        src="/assets/img/logo/logo.png"
+                        src="/assets/img/logo/logo.webp"
                         alt="Sentosa Jaya Mandiri - Toko Aki Cirebon"
                         style={{
                           width: "auto",

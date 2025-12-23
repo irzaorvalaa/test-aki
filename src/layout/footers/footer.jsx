@@ -68,7 +68,7 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
                   <div className="footer-text">
                     <Link href="/" className="footer-logo-link">
                       <Image
-                        src="/assets/img/logo/logo.png"
+                        src="/assets/img/logo/logo.webp"
                         alt="Sentosa Jaya Mandiri - Toko Aki Cirebon"
                         width={220}
                         height={100}
