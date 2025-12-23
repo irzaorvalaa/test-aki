@@ -1,41 +1,44 @@
 import React from "react";
 import Link from "next/link";
 
-// ✅ SERVICE DATA - 3 LAYANAN UTAMA UNTUK HOMEPAGE
 const service_data = [
   {
     id: 1,
     icon: "fas fa-car-battery",
-    title: "Penjualan Aki Cirebon",
+    title: "Penjualan Aki Kota Cirebon",
     description:
       "Toko aki terlengkap di Cirebon. Menyediakan berbagai merek aki berkualitas untuk mobil, motor, dan truk dengan harga terbaik dan garansi resmi",
-    features: ["Aki Original", "Harga Terbaik Cirebon", "Garansi Resmi"],
+    features: ["Aki Original", "Harga Terbaik Kota Cirebon", "Garansi Resmi"],
     color: "#2b4eff",
     gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
   },
   {
     id: 2,
     icon: "fas fa-shipping-fast",
-    title: "Antar Pasang Aki Cirebon",
+    title: "Antar Pasang Aki Kota Cirebon",
     description:
-      "Gratis antar dan pasang aki ke lokasi Anda di seluruh wilayah Cirebon, tidak perlu repot datang ke toko",
-    features: ["Gratis Ongkir Cirebon", "Pasang di Lokasi", "Cepat & Aman"],
-    color: "#8b5cf6",
-    gradient: "linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%)",
+      "Gratis antar dan pasang aki ke lokasi Anda di seluruh wilayah Kota Cirebon, tidak perlu repot datang ke toko",
+    features: [
+      "Gratis Ongkir Kota Cirebon",
+      "Pasang di Lokasi",
+      "Cepat & Aman",
+    ],
+    color: "#2b4eff",
+    gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
   },
   {
     id: 3,
     icon: "fas fa-bolt",
-    title: "Jumper Aki Darurat Cirebon",
+    title: "Jumper Aki Darurat Kota Cirebon",
     description:
-      "Layanan jumper aki 24/7 di Cirebon untuk kendaraan yang mogok karena aki tekor. Siap membantu Anda kapan saja dan di mana saja",
+      "Layanan jumper aki 24/7 di Kota Cirebon untuk kendaraan yang mogok karena aki tekor. Siap membantu Anda kapan saja dan di mana saja",
     features: [
       "Siap 24/7 Cirebon",
       "Respon Cepat 15 Menit",
       "Jangkau Semua Area",
     ],
-    color: "#f59e0b",
-    gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
+    color: "#2b4eff",
+    gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
   },
 ];
 
@@ -49,7 +52,6 @@ const ServiceArea = ({ style_fancy }) => {
         itemType="https://schema.org/Service"
       >
         <div className="container">
-          {/* Section Header */}
           {style_fancy ? null : (
             <div className="row justify-content-center mb-60">
               <div className="col-xl-8 col-lg-10">
@@ -89,7 +91,7 @@ const ServiceArea = ({ style_fancy }) => {
                         backgroundClip: "text",
                       }}
                     >
-                      Cirebon
+                      Kota Cirebon
                     </span>
                   </h2>
                   <p
@@ -102,14 +104,13 @@ const ServiceArea = ({ style_fancy }) => {
                     }}
                   >
                     Toko aki Sentosa Jaya Mandiri dengan layanan profesional dan
-                    gratis ongkir untuk wilayah Cirebon
+                    gratis ongkir untuk wilayah Kota Cirebon
                   </p>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Service Cards */}
           <div className="row">
             {service_data.map((item, i) => (
               <div key={i} className="col-xl-4 col-lg-4 col-md-6 mb-30">
@@ -140,7 +141,6 @@ const ServiceArea = ({ style_fancy }) => {
                     e.currentTarget.style.boxShadow = "none";
                   }}
                 >
-                  {/* Decorative corner */}
                   <div
                     style={{
                       position: "absolute",
@@ -154,7 +154,6 @@ const ServiceArea = ({ style_fancy }) => {
                     }}
                   />
 
-                  {/* Icon */}
                   <div
                     style={{
                       width: "80px",
@@ -179,7 +178,6 @@ const ServiceArea = ({ style_fancy }) => {
                     ></i>
                   </div>
 
-                  {/* Title */}
                   <h3
                     itemProp="name"
                     style={{
@@ -194,7 +192,6 @@ const ServiceArea = ({ style_fancy }) => {
                     {item.title}
                   </h3>
 
-                  {/* Description */}
                   <p
                     itemProp="description"
                     style={{
@@ -210,12 +207,11 @@ const ServiceArea = ({ style_fancy }) => {
                     {item.description}
                   </p>
 
-                  {/* Features List */}
                   <ul
                     style={{
                       listStyle: "none",
                       padding: 0,
-                      margin: "0 0 25px 0",
+                      margin: 0,
                       position: "relative",
                       zIndex: 1,
                     }}
@@ -245,41 +241,11 @@ const ServiceArea = ({ style_fancy }) => {
                       </li>
                     ))}
                   </ul>
-
-                  {/* CTA Link */}
-                  <Link
-                    href="/service"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      color: item.color,
-                      textDecoration: "none",
-                      fontSize: "15px",
-                      fontWeight: "700",
-                      transition: "gap 0.3s ease",
-                      position: "relative",
-                      zIndex: 1,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.gap = "12px";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.gap = "8px";
-                    }}
-                  >
-                    <span>Selengkapnya</span>
-                    <i
-                      className="fas fa-arrow-right"
-                      style={{ fontSize: "14px" }}
-                    ></i>
-                  </Link>
                 </article>
               </div>
             ))}
           </div>
 
-          {/* ✅ TOMBOL LIHAT SEMUA LAYANAN */}
           <div className="row justify-content-center mt-50">
             <div className="col-xl-6 col-lg-8">
               <div className="text-center">
@@ -315,32 +281,6 @@ const ServiceArea = ({ style_fancy }) => {
                   <span>Lihat Semua Layanan Kami</span>
                   <i className="fas fa-arrow-right"></i>
                 </Link>
-
-                {/* CTA WhatsApp */}
-                <p
-                  style={{
-                    marginTop: "20px",
-                    fontSize: "14px",
-                    color: "#64748b",
-                  }}
-                >
-                  Atau hubungi kami via{" "}
-                  <a
-                    href="https://wa.me/6281234567890?text=Halo%20Sentosa%20Jaya%20Mandiri%2C%20saya%20ingin%20tanya%20tentang%20layanan%20aki%20di%20Cirebon"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: "#25D366",
-                      fontWeight: "700",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "5px",
-                    }}
-                  >
-                    <i className="fab fa-whatsapp"></i> WhatsApp
-                  </a>
-                </p>
               </div>
             </div>
           </div>

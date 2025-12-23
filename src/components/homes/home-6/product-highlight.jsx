@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 
-// ✅ 3 PRODUK UNGGULAN UNTUK HOMEPAGE - SESUAI PRODUCT-DATA.JS
 const featured_products = [
   {
     id: 1,
@@ -15,8 +14,8 @@ const featured_products = [
     },
     description:
       "Amaron Go adalah aki maintenance free untuk mobil sedan dan MPV dengan teknologi terkini dari Amaron",
-    color: "#10b981",
-    gradient: "linear-gradient(135deg, #10b981 0%, #34d399 100%)",
+    color: "#f59e0b",
+    gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
     icon: "fas fa-car",
   },
   {
@@ -31,8 +30,8 @@ const featured_products = [
     },
     description:
       "Aki basah berkualitas Jepang untuk mobil sedan dengan performa stabil",
-    color: "#ff4757",
-    gradient: "linear-gradient(135deg, #ff4757 0%, #ff6b6b 100%)",
+    color: "#f59e0b",
+    gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
     icon: "fas fa-car-side",
   },
   {
@@ -47,24 +46,13 @@ const featured_products = [
     },
     description:
       "Aki maintenance free produksi lokal berkualitas internasional",
-    color: "#22c55e",
-    gradient: "linear-gradient(135deg, #22c55e 0%, #4ade80 100%)",
+    color: "#f59e0b",
+    gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
     icon: "fas fa-taxi",
   },
 ];
 
 const ProductHighlight = ({ style_fancy }) => {
-  const handleWhatsApp = (product) => {
-    const message = `Halo, saya tertarik dengan produk:\n\n*${
-      product.title
-    }*\n${product.category?.toUpperCase()}\n\nMohon info harga dan detail produk. Terima kasih!`;
-    const phoneNumber = "6281234567890";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsappUrl, "_blank");
-  };
-
   return (
     <>
       <section
@@ -74,7 +62,6 @@ const ProductHighlight = ({ style_fancy }) => {
         style={{ background: "white" }}
       >
         <div className="container">
-          {/* Section Header */}
           {style_fancy ? null : (
             <div className="row justify-content-center mb-60">
               <div className="col-xl-8 col-lg-10">
@@ -134,7 +121,6 @@ const ProductHighlight = ({ style_fancy }) => {
             </div>
           )}
 
-          {/* Product Cards */}
           <div className="row">
             {featured_products.map((product, i) => (
               <div key={i} className="col-xl-4 col-lg-4 col-md-6 mb-30">
@@ -163,7 +149,6 @@ const ProductHighlight = ({ style_fancy }) => {
                     e.currentTarget.style.boxShadow = "none";
                   }}
                 >
-                  {/* Product Image Section */}
                   <div
                     style={{
                       background: product.gradient,
@@ -175,7 +160,6 @@ const ProductHighlight = ({ style_fancy }) => {
                       position: "relative",
                     }}
                   >
-                    {/* Decorative circles */}
                     <div
                       style={{
                         position: "absolute",
@@ -199,7 +183,6 @@ const ProductHighlight = ({ style_fancy }) => {
                       }}
                     />
 
-                    {/* Product Image */}
                     <div
                       style={{
                         position: "relative",
@@ -221,7 +204,6 @@ const ProductHighlight = ({ style_fancy }) => {
                       />
                     </div>
 
-                    {/* Category Badge */}
                     <span
                       style={{
                         position: "absolute",
@@ -249,7 +231,6 @@ const ProductHighlight = ({ style_fancy }) => {
                     </span>
                   </div>
 
-                  {/* Product Content */}
                   <div
                     style={{
                       padding: "30px",
@@ -258,7 +239,6 @@ const ProductHighlight = ({ style_fancy }) => {
                       flexDirection: "column",
                     }}
                   >
-                    {/* Title */}
                     <h3
                       style={{
                         fontSize: "22px",
@@ -271,7 +251,6 @@ const ProductHighlight = ({ style_fancy }) => {
                       {product.title}
                     </h3>
 
-                    {/* Description */}
                     <p
                       style={{
                         fontSize: "14px",
@@ -284,13 +263,12 @@ const ProductHighlight = ({ style_fancy }) => {
                       {product.description}
                     </p>
 
-                    {/* Specs Grid */}
                     <div
                       style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(3, 1fr)",
                         gap: "12px",
-                        marginBottom: "20px",
+                        marginBottom: 0,
                       }}
                     >
                       <div
@@ -405,49 +383,12 @@ const ProductHighlight = ({ style_fancy }) => {
                         </div>
                       </div>
                     </div>
-
-                    {/* CTA Button */}
-                    <button
-                      onClick={() => handleWhatsApp(product)}
-                      style={{
-                        width: "100%",
-                        padding: "16px 24px",
-                        background: product.gradient,
-                        color: "white",
-                        border: "none",
-                        borderRadius: "12px",
-                        fontSize: "15px",
-                        fontWeight: "700",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "10px",
-                        transition: "all 0.3s ease",
-                        boxShadow: `0 6px 20px ${product.color}35`,
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "translateY(-2px)";
-                        e.currentTarget.style.boxShadow = `0 10px 30px ${product.color}50`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "translateY(0)";
-                        e.currentTarget.style.boxShadow = `0 6px 20px ${product.color}35`;
-                      }}
-                    >
-                      <i
-                        className="fab fa-whatsapp"
-                        style={{ fontSize: "18px" }}
-                      ></i>
-                      <span>Tanya Harga</span>
-                    </button>
                   </div>
                 </article>
               </div>
             ))}
           </div>
 
-          {/* ✅ TOMBOL LIHAT SEMUA PRODUK */}
           <div className="row justify-content-center mt-50">
             <div className="col-xl-6 col-lg-8">
               <div className="text-center">
@@ -483,32 +424,6 @@ const ProductHighlight = ({ style_fancy }) => {
                   <span>Lihat Semua Produk Aki</span>
                   <i className="fas fa-arrow-right"></i>
                 </Link>
-
-                {/* CTA WhatsApp */}
-                <p
-                  style={{
-                    marginTop: "20px",
-                    fontSize: "14px",
-                    color: "#64748b",
-                  }}
-                >
-                  Butuh rekomendasi aki?{" "}
-                  <a
-                    href="https://wa.me/6281234567890?text=Halo%20Sentosa%20Jaya%20Mandiri%2C%20saya%20butuh%20rekomendasi%20aki"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: "#25D366",
-                      fontWeight: "700",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "5px",
-                    }}
-                  >
-                    <i className="fab fa-whatsapp"></i> Chat Kami
-                  </a>
-                </p>
               </div>
             </div>
           </div>
