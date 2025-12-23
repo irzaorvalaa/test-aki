@@ -10,9 +10,12 @@ const Wrapper = ({ children }) => {
     dispatch(get_cart_products());
     dispatch(get_wishlist_products());
   }, [dispatch]);
+
   return (
     <>
-      {children}
+      <main role="main" id="main-content">
+        {children}
+      </main>
       <WhatsAppFloating />
     </>
   );
