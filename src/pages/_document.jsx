@@ -1,11 +1,20 @@
-// src/pages/_document.jsx (ROLLBACK - SIMPLE VERSION)
+// src/pages/_document.jsx
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html lang="id">
       <Head>
-        {/* ✅ NORMAL LOAD (no async trick) */}
+        {/* ✅ PRELOAD only the MOST USED font (fa-solid-900) */}
+        <link
+          rel="preload"
+          href="/assets/fonts/fa-solid-900.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
+        {/* ✅ Load FontAwesome CSS (non-blocking now) */}
         <link rel="stylesheet" href="/assets/css/fontawesome-fix.css" />
 
         {/* PRELOAD HERO IMAGES - Desktop */}
@@ -22,7 +31,7 @@ export default function Document() {
           fetchpriority="high"
         />
 
-        {/* Preconnect untuk faster resources */}
+        {/* Preconnect */}
         <link rel="preconnect" href="https://test-aki.vercel.app" />
         <link
           rel="preconnect"
