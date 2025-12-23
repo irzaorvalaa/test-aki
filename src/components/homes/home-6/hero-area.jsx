@@ -6,7 +6,7 @@ const HeroArea = () => {
     <>
       <div className="hero-image-desktop">
         <Image
-          src="/assets/img/bg/homepage-sjm2rev.png"
+          src="/assets/img/bg/homepage-sjm2rev.webp"
           alt="Toko Aki Sentosa Jaya Mandiri Cirebon"
           width={1920}
           height={544}
