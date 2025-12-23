@@ -1,9 +1,9 @@
 // src/pages/aki/index.jsx
-import SEO from "@/components/common/seo";
-import Wrapper from "@/layout/wrapper";
-import Header from "@/layout/headers/header-3";
-import Footer from "@/layout/footers/footer";
-import Breadcrumb from "@/components/common/breadcrumb/breadcrumb-product";
+import SEO from "../../components/common/seo";
+import Wrapper from "../../layout/wrapper";
+import Header from "../../layout/headers/header-3";
+import Footer from "../../layout/footers/footer";
+import Breadcrumb from "../../components/common/breadcrumb/breadcrumb-product";
 import Link from "next/link";
 
 const AkiAreasPage = () => {
