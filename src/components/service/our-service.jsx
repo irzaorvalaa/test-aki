@@ -5,9 +5,9 @@ const service_data = [
   {
     id: 1,
     icon: "fas fa-car-battery",
-    title: "Penjualan Aki Cirebon",
+    title: "Penjualan Aki Kota Cirebon",
     description:
-      "Toko aki terlengkap di Cirebon. Menyediakan berbagai merek aki berkualitas untuk mobil, motor, dan truk dengan harga terbaik dan garansi resmi",
+      "Toko Aki Sentosa Jaya Mandiri adalah toko aki terlengkap di Cirebon melayani area Kejaksan, Kesambi, Harjamukti, Lemahwungkuk, dan Pekalipan. Menyediakan berbagai merek aki berkualitas untuk mobil, motor, dan truk dengan harga terbaik dan garansi resmi",
     features: ["Aki Original", "Harga Terbaik Cirebon", "Garansi Resmi"],
     color: "#2b4eff",
     gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
@@ -15,19 +15,19 @@ const service_data = [
   {
     id: 2,
     icon: "fas fa-tools",
-    title: "Pasang Aki Gratis Cirebon",
+    title: "Pasang Aki Gratis Kota Cirebon",
     description:
-      "Layanan pemasangan aki profesional di seluruh area Cirebon oleh teknisi berpengalaman, gratis untuk semua pembelian aki",
-    features: ["Teknisi Ahli", "Pemasangan Cepat", "Gratis Area Cirebon"],
+      "Toko Aki Sentosa Jaya Mandiri Cirebon menyediakan layanan pemasangan aki profesional di area Kedawung, Palimanan, Plered, Weru, dan Tengah Tani oleh teknisi berpengalaman. Gratis untuk semua pembelian aki dengan garansi pemasangan terbaik",
+    features: ["Teknisi Ahli", "Pemasangan Cepat", "Gratis Wilayah Cirebon"],
     color: "#10b981",
     gradient: "linear-gradient(135deg, #10b981 0%, #34d399 100%)",
   },
   {
     id: 3,
     icon: "fas fa-bolt",
-    title: "Jumper Aki Darurat Cirebon",
+    title: "Jumper Aki Darurat Kota Cirebon",
     description:
-      "Layanan jumper aki 24/7 di Cirebon untuk kendaraan yang mogok karena aki tekor. Siap membantu Anda kapan saja dan di mana saja",
+      "Layanan jumper aki 24/7 Toko Aki Sentosa Jaya Mandiri untuk wilayah Lemah Abang, Sumber, Talun, Losari, dan Gebang. Kendaraan mogok karena aki tekor? Hubungi kami kapan saja, respon cepat 15 menit!",
     features: [
       "Siap 24/7 Cirebon",
       "Respon Cepat 15 Menit",
@@ -39,9 +39,9 @@ const service_data = [
   {
     id: 4,
     icon: "fas fa-shipping-fast",
-    title: "Antar Pasang Aki Cirebon",
+    title: "Antar Pasang Aki Kota Cirebon",
     description:
-      "Gratis antar dan pasang aki ke lokasi Anda di seluruh wilayah Cirebon, tidak perlu repot datang ke toko",
+      "Toko Aki Sentosa Jaya Mandiri Cirebon gratis antar dan pasang aki ke lokasi Anda di Babakan, Gunungjati, Mundu, Plumbon, dan seluruh wilayah Cirebon Raya. Tidak perlu repot datang ke toko, kami yang datang ke tempat Anda",
     features: ["Gratis Ongkir Cirebon", "Pasang di Lokasi", "Cepat & Aman"],
     color: "#8b5cf6",
     gradient: "linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%)",
@@ -49,9 +49,9 @@ const service_data = [
   {
     id: 5,
     icon: "fas fa-heartbeat",
-    title: "Cek Aki Gratis Cirebon",
+    title: "Cek Aki Gratis Kota Cirebon",
     description:
-      "Layanan pengecekan kondisi aki secara gratis di Cirebon menggunakan alat modern untuk memastikan performa optimal kendaraan Anda",
+      "Toko Aki Sentosa Jaya Mandiri menyediakan layanan pengecekan kondisi aki gratis di Kejaksan, Harjamukti, Lemahwungkuk, Palimanan, dan area Pantura Cirebon menggunakan alat modern untuk memastikan performa optimal kendaraan Anda",
     features: ["Check-up Gratis", "Alat Modern", "Konsultasi Lengkap"],
     color: "#ec4899",
     gradient: "linear-gradient(135deg, #ec4899 0%, #f472b6 100%)",
@@ -59,9 +59,9 @@ const service_data = [
   {
     id: 6,
     icon: "fas fa-shield-alt",
-    title: "Garansi Aki Cirebon",
+    title: "Garansi Aki Kota Cirebon",
     description:
-      "Semua aki yang kami jual di Cirebon dilengkapi garansi resmi dari distributor dengan layanan klaim mudah dan cepat",
+      "Semua aki yang dijual Toko Aki Sentosa Jaya Mandiri Cirebon di area Kesambi, Pekalipan, Weru, Sumber, dan seluruh wilayah Cirebon dilengkapi garansi resmi dari distributor dengan layanan klaim mudah dan cepat",
     features: ["Garansi Resmi", "Klaim Mudah Cirebon", "Support Lengkap"],
     color: "#06b6d4",
     gradient: "linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%)",
@@ -278,35 +278,6 @@ const OurService = () => {
                       </li>
                     ))}
                   </ul>
-
-                  {/* CTA Link */}
-                  <Link
-                    href="/contact"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      color: item.color,
-                      textDecoration: "none",
-                      fontSize: "15px",
-                      fontWeight: "700",
-                      transition: "gap 0.3s ease",
-                      position: "relative",
-                      zIndex: 1,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.gap = "12px";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.gap = "8px";
-                    }}
-                  >
-                    <span>Hubungi Kami</span>
-                    <i
-                      className="fas fa-arrow-right"
-                      style={{ fontSize: "14px" }}
-                    ></i>
-                  </Link>
                 </div>
               </div>
             ))}

@@ -172,8 +172,8 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
         </div>
       </footer>
 
-      {/* ✅ CSS RESPONSIVE FOOTER */}
-      <style jsx>{`
+      {/* ✅ CSS RESPONSIVE FOOTER + BIGGER INSTAGRAM ICON */}
+      <style jsx global>{`
         .footer-logo-link img {
           width: auto !important;
           height: 100px !important;
@@ -203,11 +203,29 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
           color: #ff5722;
         }
 
+        /* ✅ OVERRIDE INSTAGRAM ICON SIZE IN FOOTER - MAXIMUM SIZE */
+        .footer-social .instagram-link {
+          width: 70px !important;
+          height: 70px !important;
+          font-size: 38px !important;
+          border-radius: 18px !important;
+        }
+
+        .footer-social .instagram-link:hover {
+          transform: translateY(-5px) scale(1.1) !important;
+        }
+
         /* Tablet */
         @media (max-width: 991px) {
           .footer-logo-link img {
             height: 80px !important;
             max-width: 200px;
+          }
+
+          .footer-social .instagram-link {
+            width: 65px !important;
+            height: 65px !important;
+            font-size: 34px !important;
           }
         }
 
@@ -219,11 +237,16 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
             margin: 0 auto 20px;
           }
 
-          /* ✅ Quick Links & Area Layanan rata kiri di mobile */
           .quick-links-title,
           .area-layanan-title {
             text-align: left !important;
             margin-left: 0 !important;
+          }
+
+          .footer-social .instagram-link {
+            width: 60px !important;
+            height: 60px !important;
+            font-size: 32px !important;
           }
         }
 
@@ -232,6 +255,12 @@ const Footer = ({ home_2, style_4, footer_bg, no_style, style_footer_el }) => {
           .footer-logo-link img {
             height: 50px !important;
             max-width: 160px;
+          }
+
+          .footer-social .instagram-link {
+            width: 55px !important;
+            height: 55px !important;
+            font-size: 30px !important;
           }
         }
       `}</style>

@@ -1,4 +1,4 @@
-// src/components/contact/contact-standard-area.jsx (OPTIMIZED - SEO BEAST MODE)
+// src/components/contact/contact-standard-area.jsx (OPTIMIZED - LOCAL SEO ENHANCED)
 import React from "react";
 import Head from "next/head";
 
@@ -13,7 +13,7 @@ const ContactStandardArea = () => {
     window.open(whatsappUrl, "_blank");
   };
 
-  // Structured Data for SEO
+  // Enhanced Structured Data dengan areaServed lengkap
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -49,18 +49,118 @@ const ContactStandardArea = () => {
       },
     ],
     priceRange: "$$",
-    servesCuisine: "Automotive Battery Sales",
+    // Area Served - Updated dengan wilayah lengkap
     areaServed: [
-      "Cirebon",
-      "Kejaksan",
-      "Kesambi",
-      "Harjamukti",
-      "Lemahwungkuk",
-      "Pekalipan",
-      "Palimanan",
-      "Plered",
-      "Weru",
+      // Kota Cirebon (5 Kecamatan)
+      {
+        "@type": "City",
+        name: "Kejaksan, Kota Cirebon",
+        containedInPlace: {
+          "@type": "State",
+          name: "Jawa Barat",
+        },
+      },
+      {
+        "@type": "City",
+        name: "Kesambi, Kota Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Harjamukti, Kota Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Lemahwungkuk, Kota Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Pekalipan, Kota Cirebon",
+      },
+      // Kabupaten Cirebon (Wilayah Sekitar)
+      {
+        "@type": "City",
+        name: "Kedawung, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Palimanan, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Plered, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Weru, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Tengah Tani, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Lemah Abang, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Sumber, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Talun, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Losari, Kabupaten Cirebon",
+      },
+
+      {
+        "@type": "City",
+        name: "Babakan, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Gunungjati, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Mundu, Kabupaten Cirebon",
+      },
+      {
+        "@type": "City",
+        name: "Plumbon, Kabupaten Cirebon",
+      },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Katalog Aki",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Product",
+            name: "Aki Mobil",
+            description: "Aki mobil berbagai merek untuk semua tipe kendaraan",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Product",
+            name: "Aki Motor",
+            description: "Aki motor kering dan basah untuk semua jenis motor",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Product",
+            name: "Aki Truk",
+            description: "Aki truk dan kendaraan komersial kapasitas besar",
+          },
+        },
+      ],
+    },
   };
 
   return (
@@ -341,52 +441,48 @@ const ContactStandardArea = () => {
                         >
                           Jam Operasional Toko Aki Cirebon
                         </h3>
+
                         <p
                           style={{
                             fontSize: "15px",
                             color: "#64748b",
-                            marginBottom: "6px",
+                            marginBottom: "4px",
                           }}
                         >
-                          <strong>Senin - Jumat:</strong>{" "}
-                          <time>08:00 - 17:00 WIB</time>
+                          <strong>Buka 24 Jam Nonstop</strong> – Siap melayani
+                          penjualan, pemasangan, dan jumper aki kapan pun Anda
+                          membutuhkan.
                         </p>
-                        <p
-                          style={{
-                            fontSize: "15px",
-                            color: "#64748b",
-                            marginBottom: "6px",
-                          }}
-                        >
-                          <strong>Sabtu:</strong> <time>08:00 - 15:00 WIB</time>
-                        </p>
-                        <p
-                          style={{
-                            fontSize: "14px",
-                            color: "#ef4444",
-                            marginTop: "8px",
-                            marginBottom: "0",
-                            fontWeight: "600",
-                          }}
-                        >
-                          Minggu & Tanggal Merah: Tutup
-                        </p>
+
                         <p
                           style={{
                             fontSize: "13px",
                             color: "#22c55e",
-                            marginTop: "8px",
+                            marginTop: "6px",
                             marginBottom: "0",
                             fontWeight: "600",
                           }}
                         >
-                          ✓ Layanan Jumper Aki Darurat 24/7
+                          ✓ Layanan Jumper & Antar Pasang Aki{" "}
+                          <strong>Darurat 24 Jam (24/7)</strong>
+                        </p>
+                        <p
+                          style={{
+                            fontSize: "13px",
+                            color: "#16a34a",
+                            marginTop: "4px",
+                            marginBottom: "0",
+                            fontWeight: "600",
+                          }}
+                        >
+                          ✓ Tinggal kirim lokasi, teknisi kami siap datang ke
+                          area <strong>Cirebon Raya</strong>
                         </p>
                       </div>
                     </article>
                   </div>
 
-                  {/* Area Layanan */}
+                  {/* Area Layanan - UPDATED */}
                   <div className="col-md-6">
                     <article
                       style={{
@@ -435,16 +531,29 @@ const ContactStandardArea = () => {
                           style={{
                             fontSize: "15px",
                             color: "#64748b",
-                            marginBottom: "12px",
-                            lineHeight: "1.6",
+                            marginBottom: "8px",
+                            lineHeight: "1.7",
                           }}
                           itemProp="areaServed"
                         >
-                          Kedawung • Kejaksan • Kesambi • Harjamukti
+                          <strong>Kota Cirebon:</strong>
                           <br />
-                          Lemahwungkuk • Pekalipan • Palimanan • Plered
+                          Kejaksan • Kesambi • Harjamukti • Lemahwungkuk •
+                          Pekalipan
+                        </p>
+                        <p
+                          style={{
+                            fontSize: "15px",
+                            color: "#64748b",
+                            marginBottom: "12px",
+                            lineHeight: "1.7",
+                          }}
+                        >
+                          <strong>Kabupaten Cirebon:</strong>
                           <br />
-                          Weru • Tengah Tani • Lemah Abang • Sumber
+                          Kedawung • Palimanan • Plered • Weru • Tengah Tani •
+                          Lemah Abang • Sumber • Talun • Losari • Gebang •
+                          Babakan • Gunungjati • Mundu • Plumbon
                         </p>
                         <div
                           style={{
@@ -476,7 +585,7 @@ const ContactStandardArea = () => {
             </div>
           </div>
 
-          {/* SEO Info Section */}
+          {/* SEO Info Section - UPDATED */}
           <div className="row justify-content-center">
             <div className="col-xl-10">
               <article
@@ -509,7 +618,7 @@ const ContactStandardArea = () => {
                     color: "#64748b",
                     lineHeight: "1.8",
                     marginBottom: "0",
-                    maxWidth: "850px",
+                    maxWidth: "900px",
                     margin: "0 auto",
                   }}
                   itemProp="description"
@@ -519,19 +628,25 @@ const ContactStandardArea = () => {
                   <strong>aki mobil</strong>, <strong>aki motor</strong>,{" "}
                   <strong>aki truk</strong>, dan{" "}
                   <strong>aki kendaraan berat</strong> untuk seluruh wilayah{" "}
-                  <strong>Kota Cirebon</strong> dan sekitarnya. Berlokasi
-                  strategis di <strong>Lemahwungkuk Cirebon</strong>, kami
-                  melayani area <strong>Kejaksan</strong>,{" "}
+                  <strong>Kota Cirebon</strong> dan{" "}
+                  <strong>Kabupaten Cirebon</strong>. Berlokasi strategis di{" "}
+                  <strong>Lemahwungkuk Cirebon</strong>, kami melayani pelanggan
+                  di berbagai kecamatan seperti <strong>Kejaksan</strong>,{" "}
                   <strong>Kesambi</strong>, <strong>Harjamukti</strong>,{" "}
-                  <strong>Pekalipan</strong>, <strong>Kedawung</strong>, dan
-                  sepanjang <strong>jalur Pantura Cirebon</strong>. Kami juga
-                  menjangkau wilayah kabupaten seperti{" "}
+                  <strong>Lemahwungkuk</strong>, <strong>Pekalipan</strong>{" "}
+                  serta area sekitar Cirebon Raya.
+                  <br />
+                  <br />
+                  Untuk wilayah <strong>Kabupaten Cirebon</strong>, layanan
+                  antar pasang aki menjangkau <strong>Kedawung</strong>,{" "}
                   <strong>Palimanan</strong>, <strong>Plered</strong>,{" "}
                   <strong>Weru</strong>, <strong>Tengah Tani</strong>,{" "}
                   <strong>Lemah Abang</strong>, <strong>Sumber</strong>,{" "}
                   <strong>Talun</strong>, <strong>Losari</strong>,{" "}
-                  <strong>Gebang</strong>, dan <strong>Babakan</strong>. Dengan
-                  layanan <strong>antar pasang aki gratis</strong>,{" "}
+                  <strong>Gebang</strong>, <strong>Babakan</strong>,{" "}
+                  <strong>Gunungjati</strong>, <strong>Mundu</strong>, dan{" "}
+                  <strong>Plumbon</strong>. Dengan layanan{" "}
+                  <strong>antar pasang aki gratis</strong>,{" "}
                   <strong>jumper aki darurat 24 jam</strong>,{" "}
                   <strong>garansi resmi</strong>, dan{" "}
                   <strong>harga aki terbaik di Cirebon</strong>,{" "}
@@ -544,7 +659,7 @@ const ContactStandardArea = () => {
                   <strong>aki berkualitas original</strong> dengan{" "}
                   <strong>harga terjangkau</strong>,{" "}
                   <strong>gratis ongkir</strong> untuk wilayah{" "}
-                  <strong>Cirebon Raya</strong>, dan{" "}
+                  <strong>Cirebon Raya</strong>, serta{" "}
                   <strong>garansi 1 tahun</strong> untuk semua produk aki.
                 </p>
               </article>

@@ -1,9 +1,9 @@
-// src/components/social-links.jsx (INSTAGRAM ONLY - CUSTOM STYLED)
+// src/components/social-links.jsx (INSTAGRAM ONLY - CUSTOM STYLED - BIGGER)
 import Link from "next/link";
 
 const social_links = [
   {
-    link: "https://www.instagram.com/toko_aki_sentosajayamandiri/", // ✅ Ganti dengan Instagram URL kamu
+    link: "https://www.instagram.com/toko_aki_sentosajayamandiri/",
     target: "_blank",
     icon: "fab fa-instagram",
     name: "Instagram",
@@ -25,15 +25,15 @@ const SocialLinks = () => {
         </Link>
       ))}
 
-      {/* ✅ CUSTOM INSTAGRAM STYLING */}
+      {/* ✅ CUSTOM INSTAGRAM STYLING - BIGGER VERSION */}
       <style jsx>{`
         .instagram-link {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 40px;
-          height: 40px;
-          border-radius: 12px;
+          width: 50px; /* ⬆️ Naik dari 40px */
+          height: 50px; /* ⬆️ Naik dari 40px */
+          border-radius: 14px;
           background: linear-gradient(
             135deg,
             #405de6 0%,
@@ -44,7 +44,7 @@ const SocialLinks = () => {
             #fd1d1d 100%
           );
           color: white;
-          font-size: 20px;
+          font-size: 26px; /* ⬆️ Naik dari 20px */
           transition: all 0.3s ease;
           box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
           text-decoration: none;
@@ -80,10 +80,10 @@ export const CopyRight = () => {
   return <>{copy_right}</>;
 };
 
-//  social link data 02 - INSTAGRAM ONLY
+//  social link data 02 - INSTAGRAM ONLY (BIGGER VERSION)
 const social_links_two = [
   {
-    link: "https://www.instagram.com/sentosajayamandiri_cirebon/", // ✅ Ganti dengan Instagram URL kamu
+    link: "https://www.instagram.com/sentosajayamandiri_cirebon/",
     target: "_blank",
     icon: "fab fa-instagram",
     name: "Instagram",
@@ -106,14 +106,14 @@ export const SocialLinksTwo = () => {
         </Link>
       ))}
 
-      {/* ✅ CUSTOM INSTAGRAM STYLING - VERSION 2 */}
+      {/* ✅ CUSTOM INSTAGRAM STYLING - VERSION 2 (BIGGER) */}
       <style jsx>{`
         .instagram-link-two {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 45px;
-          height: 45px;
+          width: 55px; /* ⬆️ Naik dari 45px */
+          height: 55px; /* ⬆️ Naik dari 45px */
           border-radius: 50%;
           background: linear-gradient(
             135deg,
@@ -125,7 +125,7 @@ export const SocialLinksTwo = () => {
             #fd1d1d 100%
           );
           color: white;
-          font-size: 22px;
+          font-size: 28px; /* ⬆️ Naik dari 22px */
           transition: all 0.3s ease;
           box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4);
           text-decoration: none;

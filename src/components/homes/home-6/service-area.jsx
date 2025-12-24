@@ -7,38 +7,34 @@ const service_data = [
     icon: "fas fa-car-battery",
     title: "Penjualan Aki Kota Cirebon",
     description:
-      "Toko aki terlengkap di Cirebon. Menyediakan berbagai merek aki berkualitas untuk mobil, motor, dan truk dengan harga terbaik dan garansi resmi",
-    features: ["Aki Original", "Harga Terbaik Kota Cirebon", "Garansi Resmi"],
+      "Toko Aki Sentosa Jaya Mandiri adalah toko aki terlengkap di Cirebon melayani area Kejaksan, Kesambi, Harjamukti, Lemahwungkuk, dan Pekalipan. Menyediakan berbagai merek aki berkualitas untuk mobil, motor, dan truk dengan harga terbaik dan garansi resmi",
+    features: ["Aki Original", "Harga Terbaik Cirebon", "Garansi Resmi"],
     color: "#2b4eff",
     gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
   },
   {
     id: 2,
-    icon: "fas fa-shipping-fast",
-    title: "Antar Pasang Aki Kota Cirebon",
+    icon: "fas fa-tools",
+    title: "Pasang Aki Gratis Kota Cirebon",
     description:
-      "Gratis antar dan pasang aki ke lokasi Anda di seluruh wilayah Kota Cirebon, tidak perlu repot datang ke toko",
-    features: [
-      "Gratis Ongkir Kota Cirebon",
-      "Pasang di Lokasi",
-      "Cepat & Aman",
-    ],
-    color: "#2b4eff",
-    gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
+      "Toko Aki Sentosa Jaya Mandiri Cirebon menyediakan layanan pemasangan aki profesional di area Kedawung, Palimanan, Plered, Weru, dan Tengah Tani oleh teknisi berpengalaman. Gratis untuk semua pembelian aki dengan garansi pemasangan terbaik",
+    features: ["Teknisi Ahli", "Pemasangan Cepat", "Gratis Wilayah Cirebon"],
+    color: "#10b981",
+    gradient: "linear-gradient(135deg, #10b981 0%, #34d399 100%)",
   },
   {
     id: 3,
     icon: "fas fa-bolt",
     title: "Jumper Aki Darurat Kota Cirebon",
     description:
-      "Layanan jumper aki 24/7 di Kota Cirebon untuk kendaraan yang mogok karena aki tekor. Siap membantu Anda kapan saja dan di mana saja",
+      "Layanan jumper aki 24/7 Toko Aki Sentosa Jaya Mandiri untuk wilayah Lemah Abang, Sumber, Talun, Losari, dan Gebang. Kendaraan mogok karena aki tekor? Hubungi kami kapan saja, respon cepat 15 menit!",
     features: [
       "Siap 24/7 Cirebon",
       "Respon Cepat 15 Menit",
       "Jangkau Semua Area",
     ],
-    color: "#2b4eff",
-    gradient: "linear-gradient(135deg, #2b4eff 0%, #667eea 100%)",
+    color: "#f59e0b",
+    gradient: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
   },
 ];
 
